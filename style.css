@@ -33,6 +33,7 @@ h3 {
 .app {
   display: grid;
   height: 100vh;
+  width: 100%;
   grid-template-columns: 0.8fr 1fr 0.6fr;
   grid-template-rows: 0.25fr 1.3fr 0.2fr 1fr;
   grid-template-areas:
@@ -212,12 +213,39 @@ h3 {
   margin-top: 0;
 }
 
+.nav_profile {
+  background-color: var(--light_gray);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--dark_gray);
+}
+
+.nav_profile .content {
+  display: flex;
+  align-items: center;
+}
+
+.nav_profile .content p {
+  font-weight: bold;
+  font-size: 17px;
+  margin: 0 24px;
+}
+
+.nav_profile .profile_photo {
+  background-image: url("profile.PNG");
+  width: 42px;
+  height: 42px;
+  background-size: cover;
+  border-radius: 100px;
+}
+
 .calendar {
   grid-area: calendar;
-  background-color: pink;
+  background-color: var(--light_gray);
 }
 
 .participation {
   grid-area: participation;
-  background-color: mediumvioletred;
+  background-color: var(--light_gray);
 }
