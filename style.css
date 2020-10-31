@@ -1,0 +1,223 @@
+:root {
+  --blue: #596cf9;
+  --dark_gray: #8b93ad;
+  --light_gray: #f6f7fb;
+  --green: #6fce96;
+  --card_highlight: #83ece5;
+}
+
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.flickity-button {
+  display: none;
+}
+
+h1 {
+  font-size: 36px;
+  margin: 0;
+}
+
+h2 {
+  font-size: 2.125rem;
+  margin-bottom: 2.8rem;
+}
+
+h3 {
+  font-size: 17px;
+  margin-bottom: 0;
+}
+
+.app {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 0.8fr 1fr 0.6fr;
+  grid-template-rows: 0.25fr 1.3fr 0.2fr 1fr;
+  grid-template-areas:
+    "nav_logo nav_menu  nav_profile"
+    " dashboard event calendar"
+    " dashboard stat calendar"
+    ".  stat  participation";
+}
+
+#logo {
+  height: 50px;
+  margin-left: 4rem;
+}
+
+.nav_logo {
+  grid-area: nav_logo;
+  display: flex;
+  align-items: center;
+}
+
+.nav_menu {
+  grid-area: nav_menu;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: var(--dark_gray);
+}
+
+.nav_menu .navlink {
+  display: flex;
+  align-items: baseline;
+}
+
+.nav_menu .active {
+  color: var(--blue);
+}
+
+.nav_menu .content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 27rem;
+}
+
+.nav_menu i {
+  margin-right: 0.7rem;
+}
+
+.navlink {
+  display: flex;
+  align-items: center;
+}
+
+.nav_profile {
+  grid-area: nav_profile;
+}
+
+.dashboard {
+  grid-area: dashboard;
+  padding: 2rem 4.5rem;
+}
+
+.dashboard .card {
+  background-color: var(--light_gray);
+  padding: 60px 40px;
+  border-radius: 17px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard p {
+  color: var(--dark_gray);
+}
+
+.dashboard .number_points {
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 20rem;
+}
+
+.dashboard i {
+  color: var(--green);
+}
+
+.dashboard .text-wrapper strong {
+  color: black;
+}
+
+.dashboard .text-wrapper p:last-child {
+  font-size: 1.2rem;
+}
+
+.event {
+  grid-area: event;
+  padding: 2rem 4.5rem;
+}
+
+.event .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.event .card {
+  background-color: var(--card_highlight);
+  width: 200px;
+  height: 200px;
+  border-radius: 17px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 40px;
+  margin-right: 20px;
+}
+
+.event .card .card_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.event .card .img {
+  width: 50px;
+  height: 50px;
+  background-image: url("img/food.jpg");
+  background-size: cover;
+  border-radius: 8px;
+}
+
+.event .card .right_side {
+  display: flex;
+  width: 58px;
+  justify-content: space-between;
+}
+
+.event .card p {
+  font-size: 13px;
+  margin-top: 7px;
+}
+
+.event .card .calendar {
+  position: relative;
+  bottom: -20px;
+  width: 64px;
+  height: 64px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.event .card .calendar p:first-child {
+  font-size: 14px;
+  color: var(--dark_gray);
+  margin: 0;
+}
+
+.event .card .calendar p:last-child {
+  font-weight: bold;
+  font-size: 24px;
+  margin: 0;
+}
+
+.stat {
+  grid-area: stat;
+  padding: 0 4.5rem;
+}
+
+.stat h2 {
+  margin-top: 0;
+}
+
+.calendar {
+  grid-area: calendar;
+  background-color: pink;
+}
+
+.participation {
+  grid-area: participation;
+  background-color: mediumvioletred;
+}
