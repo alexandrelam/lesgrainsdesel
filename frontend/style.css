@@ -187,7 +187,7 @@ body {
       rgba(0, 0, 0, 0.35),
       rgba(0, 0, 0, 0.35)
     ),
-    url("/img/docteur.PNG");
+    url("img/docteur.PNG");
   background-repeat: none;
   background-size: cover;
   border-radius: 17px;
