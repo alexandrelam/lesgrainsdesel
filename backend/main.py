@@ -14,3 +14,6 @@ print(odoo.searchRead("event.event", [
 
 # exemple : sans filtre, on affiche tous les evenements
 print(odoo.searchRead("event.event", [], ["name"]))
+
+odoo.createEvent("cree avec python", "2020-11-25 20:18:18",
+                 "2020-11-26 20:18:18", 6)

@@ -42,6 +42,11 @@ class Odoo:
                                           [filters],
                                           {'fields': fields})
 
+    def createEvent(self, name: str, dateBegin: str, dateEnd: str, organizerID: int):
+        return self.models.execute_kw(self.db, self.uid, self.password, 'event.event', 'create', [{
+            'name': name, 'date_begin': dateBegin, 'date_end': dateEnd, 'organizer_id': organizerID
+        }])
+
     def version(self) -> str:
         if self.common != None:
             return self.common.version()
