@@ -2,5 +2,6 @@ from odoo import Odoo
 
 odoo = Odoo()
 
-odoo.setCommonEndpoint()
-print(odoo.version())
+odoo.connect()
+
+print(odoo.searchRead("event.event", [], ["name"]))

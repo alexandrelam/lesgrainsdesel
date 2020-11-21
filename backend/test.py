@@ -18,11 +18,8 @@ models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
 res = models.execute_kw(db, uid, password,
                         'event.event', 'search_read',
                         [[]],
-                        {'fields': [], 'limit': 5})
+                        {'fields': ['name', 'date_begin', 'date_end', 'organizer_id'], 'limit': 5})
 
-for el in res:
-    with open("output", "w") as f:
-        f.write(str(el))
-    print(el)
+print(res)
 
 print("len of res", len(res))
