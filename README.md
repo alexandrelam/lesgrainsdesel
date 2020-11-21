@@ -10,9 +10,9 @@ Début de l'intégration du landing.
 
 Création d'un premier niveau d'abstraction avec la class Odoo.
 
-Voir le code simplifié dans le fichier main.py
+Voir le code simplifié dans le fichier `main.py`. Avant d'exécuter n'oubliez pas de rajouter des au moins 2 évènements dans odoo.
 
-Le fichier test.py ne sert à rien pas besoin de checker
+Le fichier `test.py` ne sert à rien pas besoin de checker
 
 # Getting Started
 
