@@ -38,7 +38,7 @@ class Odoo:
     def searchRead(self, dbTable: str, filters: [str], fields: [str]):
         if(self.models):
             return self.models.execute_kw(self.db, self.uid, self.password,
-                                          'event.event', 'search_read',
+                                          dbTable, 'search_read',
                                           [filters],
                                           {'fields': fields})
 
