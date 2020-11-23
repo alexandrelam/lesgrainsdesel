@@ -1,6 +1,5 @@
 import xmlrpc.client
 
-
 class Odoo:
     def __init__(self):
         self.url = 'http://127.0.0.1:8069'
@@ -31,12 +30,16 @@ class Odoo:
             '{}/xmlrpc/2/object'.format(self.url))
 
     def connect(self):
-        self.setCommonEndpoint()
-        self.authenticate()
-        self.setObjectEndpoint()
+        try:
+            self.setCommonEndpoint()
+            self.authenticate()
+            self.setObjectEndpoint()
+            print("Connection successful ! ")
+        except:
+            print("Connection failed :(")
 
     def searchRead(self, dbTable: str, filters: [str], fields: [str]):
-        if(self.models):
+        if self.models:
             return self.models.execute_kw(self.db, self.uid, self.password,
                                           dbTable, 'search_read',
                                           [filters],
@@ -48,7 +51,7 @@ class Odoo:
         }])
 
     def version(self) -> str:
-        if self.common != None:
+        if self.common:
             return self.common.version()
         else:
             return "You need to connect first.\nExecute .setCommonEndpoint()"
