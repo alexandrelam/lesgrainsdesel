@@ -72,14 +72,14 @@ a {
   flex-direction: column;
 }
 
-.nav .logoWrapper {
+.nav .logo-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 300px;
 }
 
-.nav .logoWrapper .logo {
+.nav .logo-wrapper .logo {
   background-image: url("img/logo.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -87,18 +87,18 @@ a {
   height: 65px;
 }
 
-.nav .navItemsWrapper {
+.nav .nav-item-wrapper {
   display: flex;
   flex-grow: 1;
   justify-content: center;
 }
 
-.nav .navItemsWrapper ul {
+.nav .nav-item-wrapper ul {
   display: flex;
   flex-flow: column;
 }
 
-.nav .navItemsWrapper li {
+.nav .nav-item-wrapper li {
   display: flex;
   align-items: center;
   margin-bottom: 50px;
@@ -106,11 +106,11 @@ a {
   transition-duration: 0.4s;
 }
 
-.nav .navItemsWrapper li:first-child {
+.nav .nav-item-wrapper li:first-child {
   color: var(--highlight);
 }
 
-.nav .navItemsWrapper li:first-child .icon {
+.nav .nav-item-wrapper li:first-child .icon {
   width: 25px;
   height: 25px;
   color: white;
@@ -122,15 +122,15 @@ a {
   box-shadow: var(--greenShadow);
 }
 
-.nav .navItemsWrapper li:last-child {
+.nav .nav-item-wrapper li:last-child {
   margin-top: auto;
 }
 
-.nav .navItemsWrapper li:hover {
+.nav .nav-item-wrapper li:hover {
   filter: brightness(0.85);
 }
 
-.nav .navItemsWrapper li p {
+.nav .nav-item-wrapper li p {
   margin-left: 7px;
 }
 
@@ -140,7 +140,7 @@ a {
 /*      EVENT list Section           */
 /*************************************/
 
-.eventsList {
+.events-list {
   width: clamp(280px, 40%, 600px);
   background-color: var(--greyBackground);
   margin-top: 36px;
@@ -150,22 +150,22 @@ a {
   flex-direction: column;
 }
 
-.eventsList .header {
+.events-list .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.eventsList .header h1 {
+.events-list .header h1 {
   font-size: 34px;
   font-weight: 700;
 }
 
-.eventsList .header p {
+.events-list .header p {
   color: var(--highlight);
 }
 
-.eventsList .header button {
+.events-list .header button {
   width: 48px;
   height: 60px;
   background-color: var(--highlight);
@@ -177,30 +177,30 @@ a {
   justify-content: center;
 }
 
-.eventsList .header button:hover {
+.events-list .header button:hover {
   background-color: var(--hover-highlight);
   cursor: pointer;
 }
 
-.eventsList .scrollListWrapper {
+.events-list .scroll-list-wrapper {
   margin-top: 50px;
   flex-grow: 1;
   overflow: hidden;
 }
 
-.eventsList .scrollListWrapper:hover {
+.events-list .scroll-list-wrapper:hover {
   overflow-y: scroll;
 }
-.eventsList .scrollListWrapper ul {
+.events-list .scroll-list-wrapper ul {
   list-style: none;
 }
 
-.eventsList .scrollListWrapper li {
+.events-list .scroll-list-wrapper li {
   display: flex;
   margin-bottom: 28px;
 }
 
-.eventsList .scrollListWrapper .img {
+.events-list .scroll-list-wrapper .img {
   width: 132.5px;
   height: 90px;
   background-image: linear-gradient(
@@ -218,26 +218,26 @@ a {
   align-items: center;
 }
 
-.eventsList .scrollListWrapper .img .date {
+.events-list .scroll-list-wrapper .img .date {
   text-align: center;
   color: white;
 }
 
-.eventsList .scrollListWrapper .img .date p {
+.events-list .scroll-list-wrapper .img .date p {
   font-size: 20px;
   font-weight: 400;
 }
 
-.eventsList .scrollListWrapper .img .date h2 {
+.events-list .scroll-list-wrapper .img .date h2 {
   font-size: 38px;
   font-weight: 700;
 }
-.eventsList .scrollListWrapper .text h2 {
+.events-list .scroll-list-wrapper .text h2 {
   font-weight: 700;
   font-size: 17px;
 }
 
-.eventsList .scrollListWrapper .text p {
+.events-list .scroll-list-wrapper .text p {
   font-size: 13px;
   font-weight: 400;
   color: var(--unselected);
@@ -272,7 +272,7 @@ a {
   color: var(--highlight);
 }
 
-.details .header .profilePicture {
+.details .header .profile-picture {
   background-image: url("img/profile.PNG");
   background-repeat: none;
   background-size: cover;
