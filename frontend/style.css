@@ -6,6 +6,7 @@ html {
 
   --unselected: #a2a9c8;
   --highlight: #5fcf8c;
+  --hover-highlight: #4eb276;
   --greyBackground: #f7f7f7;
   --greenShadow: 0px 4px 8px 1px rgba(95, 207, 140, 0.35);
 }
@@ -21,6 +22,7 @@ html {
 button {
   outline: none;
   border: none;
+  transition-duration: 0.4s;
 }
 
 body {
@@ -101,6 +103,7 @@ a {
   align-items: center;
   margin-bottom: 50px;
   color: var(--unselected);
+  transition-duration: 0.4s;
 }
 
 .nav .navItemsWrapper li:first-child {
@@ -121,6 +124,10 @@ a {
 
 .nav .navItemsWrapper li:last-child {
   margin-top: auto;
+}
+
+.nav .navItemsWrapper li:hover {
+  filter: brightness(0.85);
 }
 
 .nav .navItemsWrapper li p {
@@ -158,7 +165,7 @@ a {
   color: var(--highlight);
 }
 
-.eventsList .header .icon {
+.eventsList .header button {
   width: 48px;
   height: 60px;
   background-color: var(--highlight);
@@ -168,6 +175,11 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.eventsList .header button:hover {
+  background-color: var(--hover-highlight);
+  cursor: pointer;
 }
 
 .eventsList .scrollListWrapper {
@@ -264,6 +276,7 @@ a {
   background-image: url("img/profile.PNG");
   background-repeat: none;
   background-size: cover;
+  background-position: bottom;
   border-radius: 8px;
   width: 50px;
   height: 57px;
@@ -279,6 +292,7 @@ a {
 
 .details .content .img {
   background-image: url("img/diététicien-.jpg");
+  background-size: cover;
   width: 500px;
   height: 226px;
   border-radius: 17px;
@@ -331,6 +345,12 @@ a {
   color: white;
   font-size: 14px;
   border-radius: 8px;
+  box-shadow: var(--greenShadow);
+}
+
+.details .call-to-action button:hover {
+  background-color: var(--hover-highlight);
+  cursor: pointer;
 }
 
 .details .call-to-action .sub-text p {
