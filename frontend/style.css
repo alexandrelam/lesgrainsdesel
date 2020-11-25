@@ -18,9 +18,19 @@ html {
   padding: 0;
 }
 
+button {
+  outline: none;
+  border: none;
+}
+
 body {
   height: 100vh;
   display: flex;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .wrapper {
@@ -158,7 +168,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
 }
 
 .eventsList .scrollListWrapper {
@@ -230,8 +239,7 @@ body {
 
 .details {
   flex-grow: 1;
-  padding: 120px clamp(10px, 40px, 70px) clamp(10px, 40px, 70px)
-    clamp(10px, 40px, 70px);
+  padding: 120px 70px 50px 70px;
 }
 
 .details .header {
@@ -271,7 +279,7 @@ body {
 
 .details .content .img {
   background-image: url("img/diététicien-.jpg");
-  width: clamp(150px, 20%, 700px);
+  width: 500px;
   height: 226px;
   border-radius: 17px;
   margin: auto;
@@ -293,7 +301,7 @@ body {
 
 .details .content .text {
   margin: auto;
-  width: clamp(150px, 400px, 700px);
+  width: 500px;
 }
 
 .details .content .text h1 {
@@ -304,4 +312,28 @@ body {
 .details .content .text p {
   font-weight: 400;
   margin-top: 14px;
+}
+
+.details .call-to-action {
+  display: flex;
+  gap: 22px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.details .call-to-action button {
+  padding: 17px 30px;
+  border: none;
+  background-color: var(--highlight);
+  font-family: "Inter";
+  font-weight: 700;
+  color: white;
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+.details .call-to-action .sub-text p {
+  font-size: 14px;
+  line-height: 22px;
 }
