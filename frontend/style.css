@@ -17,6 +17,7 @@ html {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
+  font-size: 16px;
 }
 
 button {
@@ -157,7 +158,7 @@ a {
 }
 
 .events-list .header h1 {
-  font-size: 34px;
+  font-size: 2.125rem;
   font-weight: 700;
 }
 
@@ -224,21 +225,21 @@ a {
 }
 
 .events-list .scroll-list-wrapper .img .date p {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 400;
 }
 
 .events-list .scroll-list-wrapper .img .date h2 {
-  font-size: 38px;
+  font-size: 2.375rem;
   font-weight: 700;
 }
 .events-list .scroll-list-wrapper .text h2 {
   font-weight: 700;
-  font-size: 17px;
+  font-size: 1.0625rem;
 }
 
 .events-list .scroll-list-wrapper .text p {
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 400;
   color: var(--unselected);
 }
@@ -261,13 +262,13 @@ a {
 }
 
 .details .header h2 {
-  font-size: 17px;
+  font-size: 1.0625rem;
   font-weight: 700;
   margin-bottom: 4px;
 }
 
 .details .header p {
-  font-size: 17px;
+  font-size: 1.0625rem;
   font-weight: 500;
   color: var(--highlight);
 }
@@ -302,11 +303,11 @@ a {
 .details .content .small {
   display: flex;
   color: var(--unselected);
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 400;
   margin: auto;
   margin-top: 24px;
-  width: clamp(150px, 400px, 700px);
+  width: 500px;
 }
 
 .details .content .small p {
@@ -319,7 +320,7 @@ a {
 }
 
 .details .content .text h1 {
-  font-size: 24px;
+  font-size: 1.5rem;
   margin-top: 24px;
 }
 
@@ -343,7 +344,7 @@ a {
   font-family: "Inter";
   font-weight: 700;
   color: white;
-  font-size: 14px;
+  font-size: 0.875rem;
   border-radius: 8px;
   box-shadow: var(--greenShadow);
 }
@@ -354,6 +355,37 @@ a {
 }
 
 .details .call-to-action .sub-text p {
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 22px;
+}
+
+/*************************************/
+
+/*************************************/
+/*         BREAKPOINTS               */
+/*************************************/
+
+@media only screen and (max-height: 800px) {
+  *,
+  *:before,
+  *:after {
+    font-size: 14px;
+  }
+
+  .events-list {
+    padding: 40px 50px 0 50px;
+  }
+
+  .nav .logo-wrapper {
+    height: 200px;
+  }
+
+  .details {
+    flex-grow: 1;
+    padding: 70px 70px 50px 70px;
+  }
+
+  .details .content .img {
+    display: none;
+  }
 }

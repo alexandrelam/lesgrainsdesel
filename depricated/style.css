@@ -16,7 +16,7 @@ body {
 }
 
 h1 {
-  font-size: 36px;
+  font-size: 2.25rem;
   margin: 0;
 }
 
@@ -26,7 +26,7 @@ h2 {
 }
 
 h3 {
-  font-size: 17px;
+  font-size: 1.0625rem;
   margin-bottom: 0;
 }
 
@@ -173,7 +173,7 @@ h3 {
 }
 
 .event .card p {
-  font-size: 13px;
+  font-size: 0.8125rem;
   margin-top: 7px;
 }
 
@@ -193,14 +193,14 @@ h3 {
 }
 
 .event .card .calendar p:first-child {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--dark_gray);
   margin: 0;
 }
 
 .event .card .calendar p:last-child {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 1.5rem;
   margin: 0;
 }
 
@@ -228,7 +228,7 @@ h3 {
 
 .nav_profile .content p {
   font-weight: bold;
-  font-size: 17px;
+  font-size: 1.0625rem;
   margin: 0 24px;
 }
 
