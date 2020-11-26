@@ -253,6 +253,8 @@ a {
 .details {
   flex-grow: 1;
   padding: 120px 70px 50px 70px;
+  display: flex;
+  justify-content: center;
 }
 
 .details .header {
@@ -307,7 +309,6 @@ a {
   font-weight: 400;
   margin: auto;
   margin-top: 24px;
-  width: 500px;
 }
 
 .details .content .small p {
@@ -316,7 +317,7 @@ a {
 
 .details .content .text {
   margin: auto;
-  width: 500px;
+  max-width: 500px;
 }
 
 .details .content .text h1 {
@@ -387,5 +388,28 @@ a {
 
   .details .content .img {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 1250px) {
+  .nav {
+    display: none;
+  }
+
+  .events-list {
+    margin-left: 50px;
+    width: 500px;
+  }
+
+  .details {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .details .content,
+  .details .content-wrapper,
+  .details .content .img,
+  .details .header {
+    width: 350px;
   }
 }
