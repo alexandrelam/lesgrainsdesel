@@ -6,6 +6,17 @@ Début de l'intégration du landing.
 
 **Important** il faut télécharger et ajouter dans le dossier frontend `frontend\fontawesome-free-5.15.1-web`.
 
+### Installation des icônes
+
+1) Téléchargez le dossier suivant : https://use.fontawesome.com/releases/v5.15.1/fontawesome-free-5.15.1-web.zip
+2) Dézipez et placez le dossier dans le dossier frontend (lesgrainsdesel/frontend/fontawesome-free-5.15.1-web)
+
+### Todo
+
+- [x] Intégration du la maquette landing pour les écrans de tailles grandes et moyennes
+- [ ] Navbar hamburger
+- [ ] Finir les maquettes des autres pages
+
 ## Backend
 
 Création d'un premier niveau d'abstraction avec la class Odoo.
@@ -13,6 +24,33 @@ Création d'un premier niveau d'abstraction avec la class Odoo.
 Voir le code simplifié dans le fichier `main.py`. Avant d'exécuter n'oubliez pas de rajouter des au moins 2 évènements dans odoo.
 
 Le fichier `test.py` ne sert à rien pas besoin de checker
+
+Les fichiers `.json` servent d'exemple pour montrer les différentes propriétés disponibles pour les membres et évènements.
+
+### Exemple d'utilisation
+
+```
+from odoo import Odoo
+
+odoo = Odoo()
+
+# connect() permet de set les endpoints common et
+# object ainsi que d'obtenir le uid
+odoo.connect()
+
+# exemple : on cherche l'evenement avec un id de 2
+#           et on affiche que la propriete name et
+#           l organisateur de l evenement
+
+# Ne pas oublier de rajouter au moins 2 evenements
+print(odoo.searchRead("event.event", [["id", "=", 2]], ["name", "organizer_id"]))
+```
+
+### Todo
+
+- [x] Connection facilité
+- [ ] Trouver où est situé le système de points
+- [ ] Trouver comment marche l'identification des membres de la coopération et des admins sur odoo
 
 # Getting Started
 
