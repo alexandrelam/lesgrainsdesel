@@ -4,6 +4,8 @@
 
 Début de l'intégration du landing.
 
+![landing_v1](https://user-images.githubusercontent.com/25727549/100433402-4fb10f00-309b-11eb-8ab8-60b95dfea113.PNG)
+
 **Important** il faut télécharger et ajouter dans le dossier frontend `frontend\fontawesome-free-5.15.1-web`.
 
 ### Installation des icônes
