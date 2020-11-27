@@ -5,18 +5,23 @@
 Début de l'intégration du landing.
 
 ![landing_v1](https://user-images.githubusercontent.com/25727549/100433402-4fb10f00-309b-11eb-8ab8-60b95dfea113.PNG)
+![landingmedium](https://user-images.githubusercontent.com/25727549/100482533-02af5600-30f8-11eb-9774-68abeeeb34c6.PNG)
+![ladingmediummenun](https://user-images.githubusercontent.com/25727549/100482536-0347ec80-30f8-11eb-96cf-7718a34d3280.PNG)
+![landingphone](https://user-images.githubusercontent.com/25727549/100482535-0347ec80-30f8-11eb-9fc2-6b3e7061504f.PNG)
 
 **Important** il faut télécharger et ajouter dans le dossier frontend `frontend\fontawesome-free-5.15.1-web`.
 
 ### Installation des icônes
 
-1) Téléchargez le dossier suivant : https://use.fontawesome.com/releases/v5.15.1/fontawesome-free-5.15.1-web.zip
-2) Dézipez et placez le dossier dans le dossier frontend (lesgrainsdesel/frontend/fontawesome-free-5.15.1-web)
+1. Téléchargez le dossier suivant : https://use.fontawesome.com/releases/v5.15.1/fontawesome-free-5.15.1-web.zip
+2. Dézipez et placez le dossier dans le dossier frontend (lesgrainsdesel/frontend/fontawesome-free-5.15.1-web)
 
 ### Todo
 
 - [x] Intégration du la maquette landing pour les écrans de tailles grandes et moyennes
-- [ ] Navbar hamburger
+- [x] Navbar hamburger
+- [x] Media queries pour les différentes tailles de pages
+- [ ] Bonus ! Changer le bouton du menu hamburger pour fermer
 - [ ] Finir les maquettes des autres pages
 
 ## Backend
