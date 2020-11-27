@@ -19,7 +19,9 @@ Début de l'intégration du landing.
 ### Todo
 
 - [x] Intégration du la maquette landing pour les écrans de tailles grandes et moyennes
-- [ ] Navbar hamburger
+- [x] Navbar hamburger
+- [x] Media queries pour les différentes tailles de pages
+- [ ] Bonus ! Changer le bouton du menu hamburger pour fermer
 - [ ] Finir les maquettes des autres pages
 
 ## Backend
