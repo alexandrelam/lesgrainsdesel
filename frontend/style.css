@@ -447,3 +447,15 @@ a {
     align-items: center;
   }
 }
+
+@media only screen and (max-width: 850px) {
+  body {
+    flex-direction: column;
+  }
+
+  .events-list {
+    width: auto;
+    margin: 90px 30px 0px 30px;
+    padding: 90px 10px 10px 10px;
+  }
+}
