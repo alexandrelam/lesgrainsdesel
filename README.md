@@ -29,7 +29,7 @@ Les fichiers `.json` servent d'exemple pour montrer les différentes propriété
 
 ### Exemple d'utilisation
 
-```
+```python
 from odoo import Odoo
 
 odoo = Odoo()
