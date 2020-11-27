@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <section class="nav">
+    <section id="nav">
         <div class="logo-wrapper">
             <div class="logo"></div>
         </div>
@@ -73,7 +73,6 @@
                             <p>OCT</p>
                             <h2>8</h2>
                         </div>
-
                     </div>
                     <div class="text">
                         <h2>Discussion avec un nutritionniste</h2>
@@ -86,7 +85,6 @@
                             <p>OCT</p>
                             <h2>8</h2>
                         </div>
-
                     </div>
                     <div class="text">
                         <h2>Discussion avec un nutritionniste</h2>
@@ -99,7 +97,6 @@
                             <p>OCT</p>
                             <h2>8</h2>
                         </div>
-
                     </div>
                     <div class="text">
                         <h2>Discussion avec un nutritionniste</h2>
@@ -112,7 +109,6 @@
                             <p>OCT</p>
                             <h2>8</h2>
                         </div>
-
                     </div>
                     <div class="text">
                         <h2>Discussion avec un nutritionniste</h2>
@@ -125,7 +121,6 @@
                             <p>OCT</p>
                             <h2>8</h2>
                         </div>
-
                     </div>
                     <div class="text">
                         <h2>Discussion avec un nutritionniste</h2>
@@ -138,7 +133,6 @@
                             <p>OCT</p>
                             <h2>8</h2>
                         </div>
-
                     </div>
                     <div class="text">
                         <h2>Discussion avec un nutritionniste</h2>
@@ -151,7 +145,6 @@
                             <p>OCT</p>
                             <h2>8</h2>
                         </div>
-
                     </div>
                     <div class="text">
                         <h2>Discussion avec un nutritionniste</h2>
@@ -164,7 +157,6 @@
                             <p>OCT</p>
                             <h2>8</h2>
                         </div>
-
                     </div>
                     <div class="text">
                         <h2>Discussion avec un nutritionniste</h2>
@@ -177,7 +169,6 @@
                             <p>OCT</p>
                             <h2>8</h2>
                         </div>
-
                     </div>
                     <div class="text">
                         <h2>Discussion avec un nutritionniste</h2>
@@ -219,8 +210,41 @@
                 </div>
             </div>
         </div>
-
     </section>
+    <div class="hamburger-menu" onclick="handleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+    <script>
+        function handleMenu() {
+            var x = document.querySelector("#nav");
+            const style = getComputedStyle(x);
+            if (style.display === "none") {
+                x.style.display = "flex";
+                x.style.position = "absolute";
+                x.style.width = "300px";
+                x.style.boxShadow = "0px 0px 33px rgba(0, 0, 0, 0.15)";
+            }
+            else {
+                x.style.display = "none";
+            }
+        }
+
+        function backToNormal() {
+            var x = document.querySelector("#nav");
+            var w = window.innerWidth;
+            if (w > 1250) {
+                x.style.display = "flex";
+                x.style.position = "static";
+                x.style.boxShadow = "none";
+            }
+            else {
+                x.style.display = "none";
+            }
+        }
+
+        window.onresize = backToNormal;
+
+    </script>
 </body>
 
 </html>
