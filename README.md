@@ -59,6 +59,12 @@ print(odoo.searchRead("event.event", [["id", "=", 2]], ["name", "organizer_id"])
 - [ ] Trouver où est situé le système de points
 - [ ] Trouver comment marche l'identification des membres de la coopération et des admins sur odoo
 
+## Django
+
+Pour installer les dépendances python et notamment Django je vous conseille d'utiliser virtualenv.
+
+Si vous ne le faites pas, c'est pas très grave. Allez dans le dossier `django_test` et exécutez la commande `pip install requirements.txt`.
+
 # Getting Started
 
 Ce guide va vous apprendre à installer et configurer Docker pour le faire fonctionner avec foodcoop, une version de Odoo avec des addons supplémentaires.
