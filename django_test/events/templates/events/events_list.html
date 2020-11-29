@@ -14,25 +14,27 @@
   <div class="scroll-list-wrapper">
     <ul>
       {% for event in eventsList %}
-      <li>
-        <div
-          class="img"
-          style="background-image: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.35),
-      rgba(0, 0, 0, 0.35)
-    ), url('{{ event.icon.url }}')"
-        >
-          <div class="date">
-            <p>{{event.date_begin|date:"M"}}</p>
-            <h2>{{event.date_begin|date:"d"}}</h2>
+      <a href="/{{event.id}}">
+        <li>
+          <div
+            class="img"
+            style="background-image: linear-gradient(
+                  0deg,
+                  rgba(0, 0, 0, 0.35),
+                  rgba(0, 0, 0, 0.35)
+                ), url('{{ event.icon.url }}')"
+          >
+            <div class="date">
+              <p>{{event.date_begin|date:"M"}}</p>
+              <h2>{{event.date_begin|date:"d"}}</h2>
+            </div>
           </div>
-        </div>
-        <div class="text">
-          <h2>{{event.title}}</h2>
-          <p>{{event.long_description}}</p>
-        </div>
-      </li>
+          <div class="text">
+            <h2>{{event.title}}</h2>
+            <p>{{event.long_description}}</p>
+          </div>
+        </li>
+      </a>
       {% endfor %}
     </ul>
   </div>

@@ -12,6 +12,7 @@ class Event(models.Model):
     date_end = models.DateTimeField(max_length=300)
     icon = models.ImageField(upload_to="images/")
     image = models.ImageField(upload_to='images/')
+    participation = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title + " by " + self.author
