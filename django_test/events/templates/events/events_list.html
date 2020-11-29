@@ -13,141 +13,20 @@
   </div>
   <div class="scroll-list-wrapper">
     <ul>
+      {% for event in eventsList %}
       <li>
-        <div class="img">
+        <div class="img" style="background-image: url('{{ event.icon.url }}')">
           <div class="date">
-            <p>OCT</p>
-            <h2>8</h2>
+            <p>{{event.date_begin|date:"M"}}</p>
+            <h2>{{event.date_begin|date:"d"}}</h2>
           </div>
         </div>
         <div class="text">
-          <h2>Discussion avec un nutritionniste</h2>
-          <p>
-            Rencontre et discussion avec le Docteur Jérôme Bernard Pellet
-            Médecin nutritionniste
-          </p>
+          <h2>{{event.title}}</h2>
+          <p>{{event.long_description}}</p>
         </div>
       </li>
-      <li>
-        <div class="img">
-          <div class="date">
-            <p>OCT</p>
-            <h2>8</h2>
-          </div>
-        </div>
-        <div class="text">
-          <h2>Discussion avec un nutritionniste</h2>
-          <p>
-            Rencontre et discussion avec le Docteur Jérôme Bernard Pellet
-            Médecin nutritionniste
-          </p>
-        </div>
-      </li>
-      <li>
-        <div class="img">
-          <div class="date">
-            <p>OCT</p>
-            <h2>8</h2>
-          </div>
-        </div>
-        <div class="text">
-          <h2>Discussion avec un nutritionniste</h2>
-          <p>
-            Rencontre et discussion avec le Docteur Jérôme Bernard Pellet
-            Médecin nutritionniste
-          </p>
-        </div>
-      </li>
-      <li>
-        <div class="img">
-          <div class="date">
-            <p>OCT</p>
-            <h2>8</h2>
-          </div>
-        </div>
-        <div class="text">
-          <h2>Discussion avec un nutritionniste</h2>
-          <p>
-            Rencontre et discussion avec le Docteur Jérôme Bernard Pellet
-            Médecin nutritionniste
-          </p>
-        </div>
-      </li>
-      <li>
-        <div class="img">
-          <div class="date">
-            <p>OCT</p>
-            <h2>8</h2>
-          </div>
-        </div>
-        <div class="text">
-          <h2>Discussion avec un nutritionniste</h2>
-          <p>
-            Rencontre et discussion avec le Docteur Jérôme Bernard Pellet
-            Médecin nutritionniste
-          </p>
-        </div>
-      </li>
-      <li>
-        <div class="img">
-          <div class="date">
-            <p>OCT</p>
-            <h2>8</h2>
-          </div>
-        </div>
-        <div class="text">
-          <h2>Discussion avec un nutritionniste</h2>
-          <p>
-            Rencontre et discussion avec le Docteur Jérôme Bernard Pellet
-            Médecin nutritionniste
-          </p>
-        </div>
-      </li>
-      <li>
-        <div class="img">
-          <div class="date">
-            <p>OCT</p>
-            <h2>8</h2>
-          </div>
-        </div>
-        <div class="text">
-          <h2>Discussion avec un nutritionniste</h2>
-          <p>
-            Rencontre et discussion avec le Docteur Jérôme Bernard Pellet
-            Médecin nutritionniste
-          </p>
-        </div>
-      </li>
-      <li>
-        <div class="img">
-          <div class="date">
-            <p>OCT</p>
-            <h2>8</h2>
-          </div>
-        </div>
-        <div class="text">
-          <h2>Discussion avec un nutritionniste</h2>
-          <p>
-            Rencontre et discussion avec le Docteur Jérôme Bernard Pellet
-            Médecin nutritionniste
-          </p>
-        </div>
-      </li>
-      <li>
-        <div class="img">
-          <div class="date">
-            <p>OCT</p>
-            <h2>8</h2>
-          </div>
-        </div>
-        <div class="text">
-          <h2>Discussion avec un nutritionniste</h2>
-          <p>
-            Rencontre et discussion avec le Docteur Jérôme Bernard Pellet
-            Médecin nutritionniste
-          </p>
-        </div>
-      </li>
+      {% endfor %}
     </ul>
   </div>
 </section>
