@@ -18,17 +18,17 @@
           <p>17 personnes participent</p>
         </div>
         <div class="text">
-          <h1>Discussion avec un nutritionniste</h1>
-          <p>
-            Rencontre et discussion avec le Docteur Jérôme Bernard Pellet
-            Médecin nutritionniste.
-          </p>
+          <h1>{{ selected.title }}</h1>
+          <p>{{ selected.long_description }}</p>
         </div>
         <div class="call-to-action">
           <a href="#"><button>Je participe</button></a>
           <div class="sub-text">
-            <p><strong>8 octobre, 2020</strong></p>
-            <p>jeudi à 19h30</p>
+            <p><strong>{{selected.date_begin|date:"d M Y"}}</strong></p>
+            <p>
+              {{selected.date_begin|date:"D"}} à
+              {{selected.date_begin|date:"H:i"}}
+            </p>
           </div>
         </div>
       </div>
