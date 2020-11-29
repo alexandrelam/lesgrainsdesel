@@ -84,7 +84,7 @@ a {
 }
 
 #nav .logo-wrapper .logo {
-  background-image: url("img/logo.png");
+  background-image: url("logo.png");
   background-repeat: no-repeat;
   background-size: contain;
   width: 120px;
