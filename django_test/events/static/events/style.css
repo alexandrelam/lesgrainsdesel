@@ -206,14 +206,8 @@ a {
 }
 
 .events-list .scroll-list-wrapper .img {
-  width: 132.5px;
-  height: 90px;
-  background-image: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.35),
-      rgba(0, 0, 0, 0.35)
-    ),
-    url("img/docteur.PNG");
+  min-width: 100px;
+  min-height: 90px;
   background-repeat: none;
   background-size: cover;
   border-radius: 17px;
@@ -236,6 +230,10 @@ a {
 .events-list .scroll-list-wrapper .img .date h2 {
   font-size: 2.375rem;
   font-weight: 700;
+}
+
+.events-list .scroll-list-wrapper .text {
+  width: auto;
 }
 
 .events-list .scroll-list-wrapper .text h2 {
@@ -281,7 +279,7 @@ a {
 }
 
 .details .header .profile-picture {
-  background-image: url("img/profile.PNG");
+  background-image: url("profile.PNG");
   background-repeat: none;
   background-size: cover;
   background-position: bottom;
@@ -299,7 +297,7 @@ a {
 }
 
 .details .content .img {
-  background-image: url("img/diététicien-.jpg");
+  background-image: url("diététicien-.jpg");
   background-size: cover;
   width: 500px;
   height: 226px;
