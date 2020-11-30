@@ -21,7 +21,7 @@ Début de l'intégration du landing.
 - [x] Intégration du la maquette landing pour les écrans de tailles grandes et moyennes
 - [x] Navbar hamburger
 - [x] Media queries pour les différentes tailles de pages
-- [ ] Bonus ! Changer le bouton du menu hamburger pour fermer
+- [x] Bonus ! Changer le bouton du menu hamburger pour fermer
 - [ ] Finir les maquettes des autres pages
 
 ## Backend
@@ -63,7 +63,16 @@ print(odoo.searchRead("event.event", [["id", "=", 2]], ["name", "organizer_id"])
 
 Pour installer les dépendances python et notamment Django je vous conseille d'utiliser virtualenv.
 
-Si vous ne le faites pas, c'est pas très grave. Allez dans le dossier `django_test` et exécutez la commande `pip install requirements.txt`.
+Si vous ne le faites pas, c'est pas très grave. Allez dans le dossier `django` et exécutez la commande `pip install requirements.txt`. Cela vous permettra d'installer les différentes dépendances (Django et Pillow).
+
+La page admin est accessible via `http://127.0.0.1:8000/admin/`.
+
+Les identifiants sont :
+
+- user : admin
+- mdp : admin
+
+**Pour les icônes** il faut mettre le dossier `fontawesome-free-5.15.1-web` dans `lesgrainsdesel\django_test\events\static\events`.
 
 # Getting Started
 

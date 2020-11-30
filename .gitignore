@@ -1,5 +1,5 @@
-/frontend/fontawesome-free-5.15.1-web
-/django_test/events/static/events/fontawesome-free-5.15.1-web
+/fontawesome-free-5.15.1-web
+/django/events/static/events/fontawesome-free-5.15.1-web
 
 todo
 
@@ -106,8 +106,6 @@ ENV/
 .mypy_cache/
 
 .DS_Store
-*.sqlite3
-media/
 *.pyc
 *.db
 *.pid
