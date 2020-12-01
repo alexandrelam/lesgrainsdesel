@@ -10,12 +10,15 @@
     </div>
     <div class="content">
       <div class="content-wrapper">
-        <div class="img" style="background-image: url('{{selected.image.url}}')"></div>
+        <div
+          class="img"
+          style="background-image: url('{{selected.image.url}}')"
+        ></div>
         <div class="small">
           <div class="icon">
             <i class="far fa-user-circle"></i>
           </div>
-          <p>{{selected.participation}} personnes participent</p>
+          <p>{{participation.count}} personnes participent</p>
         </div>
         <div class="text">
           <h1>{{ selected.title }}</h1>
