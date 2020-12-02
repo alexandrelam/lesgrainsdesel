@@ -72,6 +72,10 @@ Les identifiants sont :
 - user : admin
 - mdp : admin
 
+### Todo
+
+- [ ] Optimiser les images car loading trop long quand on sélectionne un événement
+
 **Pour les icônes** il faut mettre le dossier `fontawesome-free-5.15.1-web` dans `lesgrainsdesel\django_test\events\static\events`.
 
 # Getting Started
