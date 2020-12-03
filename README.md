@@ -9,8 +9,6 @@ Début de l'intégration du landing.
 ![ladingmediummenun](https://user-images.githubusercontent.com/25727549/100482536-0347ec80-30f8-11eb-96cf-7718a34d3280.PNG)
 ![landingphone](https://user-images.githubusercontent.com/25727549/100482535-0347ec80-30f8-11eb-9fc2-6b3e7061504f.PNG)
 
-**Important** il faut télécharger et ajouter dans le dossier frontend `frontend\fontawesome-free-5.15.1-web`.
-
 ### Installation des icônes
 
 1. Téléchargez le dossier suivant : https://use.fontawesome.com/releases/v5.15.1/fontawesome-free-5.15.1-web.zip
@@ -28,11 +26,8 @@ Début de l'intégration du landing.
 
 Création d'un premier niveau d'abstraction avec la class Odoo.
 
-Voir le code simplifié dans le fichier `main.py`. Avant d'exécuter n'oubliez pas de rajouter des au moins 2 évènements dans odoo.
-
-Le fichier `test.py` ne sert à rien pas besoin de checker
-
-Les fichiers `.json` servent d'exemple pour montrer les différentes propriétés disponibles pour les membres et évènements.
+### Todo
+- [ ] Bouger `odoo.py` dans une autre app django
 
 ### Exemple d'utilisation
 
