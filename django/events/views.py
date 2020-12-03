@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Event, Participation
 # Create your views here.
 
@@ -9,3 +9,7 @@ def home(request, id):
     context["selected"] = Event.objects.get(id=id)
     context["participation"] = Participation.objects.filter(event__id=id)
     return render(request, 'events/details.html', context)
+
+def redirect_view(request):
+    response = redirect("events/1")
+    return response
