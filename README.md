@@ -1,35 +1,85 @@
-# Repo test où on apprend des choses
+# Event management with Odoo
 
-## Frontend
-
-Début de l'intégration du landing.
+Application integrated with the Odoo ERP initially developed to facilitate event management for the Les Grains de Sel cooperative supermarket.
 
 ![landing_v1](https://user-images.githubusercontent.com/25727549/100433402-4fb10f00-309b-11eb-8ab8-60b95dfea113.PNG)
-![landingmedium](https://user-images.githubusercontent.com/25727549/100482533-02af5600-30f8-11eb-9774-68abeeeb34c6.PNG)
-![ladingmediummenun](https://user-images.githubusercontent.com/25727549/100482536-0347ec80-30f8-11eb-96cf-7718a34d3280.PNG)
-![landingphone](https://user-images.githubusercontent.com/25727549/100482535-0347ec80-30f8-11eb-9fc2-6b3e7061504f.PNG)
 
-### Installation des icônes
+## Table of content
+- [Getting started](#getting-started)
+  - [Prerequisite](#prerequisite)
+    - [Git](#git)
+    - [Python3](#python3)
+    - [Django and other dependancies](#django-and-other-dependancies)
+    - [Docker](#docker)
+  - [Start Django app](#start-django-app)
+  - [Start Odoo](#start-odoo)
+- [Backend](#backend)
+  - [Exemple of use](#exemple-of-use)
+  - [todo](#todo)
 
-1. Téléchargez le dossier suivant : https://use.fontawesome.com/releases/v5.15.1/fontawesome-free-5.15.1-web.zip
-2. Dézipez et placez le dossier dans le dossier frontend (lesgrainsdesel/frontend/fontawesome-free-5.15.1-web)
+## Getting started
 
-### Todo
+### Prerequisite
 
-- [x] Intégration du la maquette landing pour les écrans de tailles grandes et moyennes
-- [x] Navbar hamburger
-- [x] Media queries pour les différentes tailles de pages
-- [x] Bonus ! Changer le bouton du menu hamburger pour fermer
-- [ ] Finir les maquettes des autres pages
+- git
+- Python3 && pip3
+- Django 3
+- Docker with foodcoop [image](https://gitlab.com/lgds/foodcoops)
+
+
+##### Git
+
+1. Install git : https://phoenixnap.com/kb/how-to-install-git-windows.
+2. In a console/terminal configure git using 
+    `git config --global user.name "FIRST_NAME LAST_NAME"`
+    `git config --global user.email "MY_NAME@example.com"`
+
+##### Python3
+
+1. Install [python3](https://www.python.org/downloads/).
+2. Add python to path during the installation process to use python et pip in a console/terminal.
+3. **Optional** if python and pip wasn't added to path on windows follow the next step.
+3.1 Add python to path : https://geek-university.com/python/add-python-to-the-windows-path/.
+3.2 Add PIP to path : https://projects.raspberrypi.org/en/projects/using-pip-on-windows/4.
+4. Check your installation. Try to execute the command `python` and `pip` in your console/terminal.
+
+
+##### Django and other dependancies
+
+1. Move to the `django` directory using `cd django`.
+2. Install dependancies using the command : `pip install -r requirements.txt`
+
+##### Docker
+
+1. Install DockerHub from : https://docs.docker.com/docker-for-windows/install/.
+2. Déplacez vous dans le dossier de votre choix puis clonez le répo _foodcoop_ : `git clone https://gitlab.com/lgds/foodcoops`
+3. Rendez-vous dans le dossier dans lequel vous avez cloné le répo foodcoop.
+4. Exécutez la commande `docker-compose up` pour démarrer le conteneur de l'application.
+
+### Start Django app
+
+1. Download [fontawesome](https://fontawesome.com/how-to-use/on-the-web/setup/hosting-font-awesome-yourself).
+2. Extract the folder in `django/events/static/events/fontawesome-free-5.15.1-web`.
+3. Move to the folder `django`.
+4. `python manage.py runserver`
+
+### Start Odoo
+
+Once the foodcoop container is launched, go to `http: //127.0.0.1: 8069`
+
+- Email: admin
+
+- Password: admin
+
+From there, install the coop-account and coop-shift apps.
+
+After following these steps, you will be able to access the database with python using `odoo.py`.
 
 ## Backend
 
-Création d'un premier niveau d'abstraction avec la class Odoo.
+Creation of a first level of abstraction with the Odoo class.
 
-### Todo
-- [ ] Bouger `odoo.py` dans une autre app django
-
-### Exemple d'utilisation
+### Exemple of use
 
 ```python
 from odoo import Odoo
@@ -53,78 +103,9 @@ print(odoo.searchRead("event.event", [["id", "=", 2]], ["name", "organizer_id"])
 - [x] Connection facilité
 - [ ] Trouver où est situé le système de points
 - [ ] Trouver comment marche l'identification des membres de la coopération et des admins sur odoo
-
-## Django
-
-Pour installer les dépendances python et notamment Django je vous conseille d'utiliser virtualenv.
-
-Si vous ne le faites pas, c'est pas très grave. Allez dans le dossier `django` et exécutez la commande `pip install requirements.txt`. Cela vous permettra d'installer les différentes dépendances (Django et Pillow).
-
-La page admin est accessible via `http://127.0.0.1:8000/admin/`.
-
-Les identifiants sont :
-
-- user : admin
-- mdp : admin
-
-La landing page se trouve à l'adresse suivante `http://127.0.0.1:8000/events/1`
-
-### Todo
-
+- [ ] Bouger `odoo.py` dans une autre app django
 - [ ] Optimiser les images car loading trop long quand on sélectionne un événement
 
-**Pour les icônes** il faut mettre le dossier `fontawesome-free-5.15.1-web` dans `lesgrainsdesel\django_test\events\static\events`.
 
-# Getting Started
 
-Ce guide va vous apprendre à installer et configurer Docker pour le faire fonctionner avec foodcoop, une version de Odoo avec des addons supplémentaires.
 
-> Ce guide est écrit pour les utilisateurs de windows 10. Si vous êtes sur Linux vous devriez savoir vous débrouiller sans lire ce guide.
-
-## Installation de Docker
-
-Cliquez sur le lien suivant pour télécharger [Docker](https://desktop.docker.com/win/stable/Docker%20Desktop%20Installer.exe).
-Avant de l'installer, assurez-vous d'avoir activé les fonctionnalités Hyper-V et Container de Windows.
-
-Une fois intallé, lancez Docker pour vérifier qu'il n'y ait pas d'erreurs. Vous pouvez alors suivre le tutoriel de 2 minutes pour comprendre les bases de l'outil.
-
-## Installation de Git
-
----
-
-Tutoriel étape par étape pour installer git :
-https://phoenixnap.com/kb/how-to-install-git-windows
-
----
-
-Téléchargez GIT pour windows en cliquand sur ce [lien](https://git-scm.com/downloads).
-
-Installez git et lancez le pour le configurer.
-
-`git config --global user.name "FIRST_NAME LAST_NAME"`
-
-`git config --global user.email "MY_NAME@example.com"`
-
-## Configuration de FoodCoop avec Docker
-
-Une fois que vous avez configuré git, déplacez vous dans le dossier de votre choix puis clonez le répo _foodcoop_.
-
-`git clone https://gitlab.com/lgds/foodcoops`
-
-Rendez-vous dans le dossier dans lequel vous avez cloné le répo foodcoop.
-
-Exécutez la commande `docker-compose up` pour démarrer le conteneur de l'application.
-
-## Lancement de Odoo
-
-Une fois le conteneur de foodcoop lancé, rendez-vous sur `http://127.0.0.1:8069`
-
-- Email : admin
-
-- Mot de passe : admin
-
-A partir de là, installez les applications coop-account et coop-shift.
-
-Après avoir suivi ces étapes, vous pourrez accéder à la base de données avec python.
-
-Pour comprendre comment se connecter avec python checkez le fichier `main.py` dans le dossier backend
