@@ -72,6 +72,8 @@ Les identifiants sont :
 - user : admin
 - mdp : admin
 
+La landing page se trouve à l'adresse suivante `http://127.0.0.1:8000/events/1`
+
 ### Todo
 
 - [ ] Optimiser les images car loading trop long quand on sélectionne un événement
