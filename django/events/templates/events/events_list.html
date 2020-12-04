@@ -27,7 +27,11 @@
             </div>
           </div>
           <div class="text">
+          {% if event.id == selected.id %}
+            <h2 class="color">{{event.title}}</h2>
+          {% else %}
             <h2>{{event.title}}</h2>
+          {% endif %}
             <p>{{event.long_description}}</p>
           </div>
         </li>

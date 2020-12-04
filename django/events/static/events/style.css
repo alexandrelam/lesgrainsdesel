@@ -241,6 +241,9 @@ a {
   font-size: 1.0625rem;
 }
 
+.events-list .scroll-list-wrapper .text .color {
+  color: var(--highlight);
+}
 .events-list .scroll-list-wrapper .text p {
   font-size: 0.8125rem;
   font-weight: 400;
