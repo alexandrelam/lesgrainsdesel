@@ -26,6 +26,10 @@ body {
   height: 100vh;
 }
 
+/*************************************/
+/*         FORM Section              */
+/*************************************/
+
 .form {
   min-width: 615px;
   display: flex;
@@ -113,6 +117,10 @@ body {
   margin-top: 13px;
 }
 
+/*************************************/
+/*         CAROUSEL Section          */
+/*************************************/
+
 .carousel {
   flex-grow: 1;
   background: linear-gradient(
@@ -148,4 +156,14 @@ body {
 .carousel .carousel-item #carousel-img {
   width: 516px;
   border-radius: 17px;
+}
+
+/*************************************/
+/*         BREAKPOINTS               */
+/*************************************/
+
+@media only screen and (max-width: 1150px) {
+  .carousel {
+    display: none;
+  }
 }
