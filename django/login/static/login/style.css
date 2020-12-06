@@ -27,7 +27,7 @@ body {
 }
 
 .form {
-  width: 615px;
+  min-width: 615px;
   display: flex;
   justify-content: center;
   margin-top: 75px;
