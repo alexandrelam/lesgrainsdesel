@@ -2,9 +2,10 @@
 
 Application integrated with the Odoo ERP initially developed to facilitate event management for the Les Grains de Sel cooperative supermarket.
 
-![landing_v1](https://user-images.githubusercontent.com/25727549/100433402-4fb10f00-309b-11eb-8ab8-60b95dfea113.PNG)
+![maquettelanding](https://user-images.githubusercontent.com/25727549/101214918-1e2cda80-367d-11eb-9a03-bcd34327ea61.PNG)
 
 ## Table of content
+
 - [Getting started](#getting-started)
   - [Prerequisite](#prerequisite)
     - [Git](#git)
@@ -26,23 +27,21 @@ Application integrated with the Odoo ERP initially developed to facilitate event
 - Django 3
 - Docker with foodcoop [image](https://gitlab.com/lgds/foodcoops)
 
-
 ##### Git
 
 1. Install git : https://phoenixnap.com/kb/how-to-install-git-windows.
-2. In a console/terminal configure git using 
-    `git config --global user.name "FIRST_NAME LAST_NAME"`
-    `git config --global user.email "MY_NAME@example.com"`
+2. In a console/terminal configure git using
+   `git config --global user.name "FIRST_NAME LAST_NAME"`
+   `git config --global user.email "MY_NAME@example.com"`
 
 ##### Python3
 
 1. Install [python3](https://www.python.org/downloads/).
 2. Add python to path during the installation process to use python et pip in a console/terminal.
 3. **Optional** if python and pip wasn't added to path on windows follow the next step.
-3.1 Add python to path : https://geek-university.com/python/add-python-to-the-windows-path/.
-3.2 Add PIP to path : https://projects.raspberrypi.org/en/projects/using-pip-on-windows/4.
+   3.1 Add python to path : https://geek-university.com/python/add-python-to-the-windows-path/.
+   3.2 Add PIP to path : https://projects.raspberrypi.org/en/projects/using-pip-on-windows/4.
 4. Check your installation. Try to execute the command `python` and `pip` in your console/terminal.
-
 
 ##### Django and other dependancies
 
@@ -105,7 +104,3 @@ print(odoo.searchRead("event.event", [["id", "=", 2]], ["name", "organizer_id"])
 - [ ] Trouver comment marche l'identification des membres de la coopération et des admins sur odoo
 - [ ] Bouger `odoo.py` dans une autre app django
 - [ ] Optimiser les images car loading trop long quand on sélectionne un événement
-
-
-
-
