@@ -15,3 +15,7 @@ def login_view(request):
             login(request, user)
             return redirect(events_views.redirect_view)
     return render(request, 'login/login.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect(login_view)
