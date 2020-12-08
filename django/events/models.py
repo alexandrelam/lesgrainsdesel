@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -21,14 +22,13 @@ class Participation(models.Model):
     adherant = models.ForeignKey("Adherant", on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.event.title + " |  "  + self.adherant.name 
+        return self.event.title + "  |  "  + self.adherant.name 
 
 
 class Adherant(models.Model):
-    name = models.CharField(max_length=50)
-    password = models.CharField(max_length=50)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True) 
     picture = models.ImageField(upload_to="images/users/", default="images/default_icon.png")
 
     def __str__(self):
-        return self.name
+        return self.user.username
     

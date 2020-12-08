@@ -282,7 +282,6 @@ a {
 }
 
 .details .header .profile-picture {
-  background-image: url("profile.PNG");
   background-repeat: none;
   background-size: cover;
   background-position: bottom;

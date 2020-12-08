@@ -2,7 +2,10 @@
 <section class="details">
   <div>
     <div class="header">
-      <div class="profile-picture"></div>
+      <div
+        class="profile-picture"
+        style="background-image : url('{{ adherent.picture.url }}')"
+      ></div>
       <div>
         <h2>{{current_user.first_name}} {{current_user.last_name}}</h2>
         <p>adhérent</p>
