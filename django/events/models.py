@@ -19,13 +19,13 @@ class Event(models.Model):
 
 class Participation(models.Model):
     event = models.ForeignKey("Event", on_delete=models.CASCADE)
-    adherant = models.ForeignKey("Adherant", on_delete=models.CASCADE)
+    Adherent = models.ForeignKey("Adherent", on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.event.title + "  |  "  + self.adherant.name 
+        return self.event.title + "  |  "  + self.Adherent.name 
 
 
-class Adherant(models.Model):
+class Adherent(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True) 
     picture = models.ImageField(upload_to="images/users/", default="images/default_icon.png")
 
