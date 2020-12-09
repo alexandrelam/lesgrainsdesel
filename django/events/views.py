@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Event, Participation, Adherant
+from .models import Event, Participation, Adherent
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -13,7 +13,7 @@ def home(request, id):
         context["participation"] = Participation.objects.filter(event__id=id)
         current_user = request.user
         context["current_user"] = current_user
-        context["adherent"] = Adherant.objects.all().filter(user__id=current_user.id)[0]
+        context["adherent"] = Adherent.objects.all().filter(user__id=current_user.id)[0]
     else:
         context = {}
     return render(request, 'events/details.html', context)
