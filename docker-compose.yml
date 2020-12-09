@@ -12,7 +12,7 @@ services:
         depends_on:
             - pgdb
     pgdb:
-        image: pgdb-v2
+        image: postgres
         container_name: pgdb
         environment:
         - POSTGRES_DB=postgres
