@@ -6,7 +6,11 @@ Application integrated with the Odoo ERP initially developed to facilitate event
 
 ## Table of content
 
-- [Getting started](#getting-started)
+- [Getting started recommended](#getting-started-recommended)
+  - [Prerequisite](#prerequisite)
+  - [Installation](#installation)
+  - [Install odoo](#install-odoo)
+- [Getting started (manual)](#getting-started-manual)
   - [Prerequisite](#prerequisite)
     - [Git](#git)
     - [Python3](#python3)
@@ -18,7 +22,43 @@ Application integrated with the Odoo ERP initially developed to facilitate event
   - [Exemple of use](#exemple-of-use)
   - [todo](#todo)
 
-## Getting started
+## Getting started recommended
+
+### Prerequisite
+
+- Docker
+- Git
+
+### Installation
+
+1. `git clone https://github.com/alexandrelam/lesgrainsdesel `
+2. Move to the right folder
+3. `docker-compose up`
+4. Open docker image in cli
+5. `python3 manage.py migrate`
+6. `python3 manage.py createsuperuser`
+7. Run the app and go to the admin page
+8. Create an event and add an `adherent` (note: images field are not required thanks to default values)
+9. Login `http://localhost:8000/login` (email=username of createsuperuser || password is password of createsuperuser)
+10. Enjoy !
+
+#### Install odoo
+
+1. Déplacez vous dans le dossier de votre choix puis clonez le répo _foodcoop_ : `git clone https://gitlab.com/lgds/foodcoops`
+2. Rendez-vous dans le dossier dans lequel vous avez cloné le répo foodcoop.
+3. Exécutez la commande `docker-compose up` pour démarrer le conteneur de l'application.
+
+Once the foodcoop container is launched, go to `http: //127.0.0.1: 8069`
+
+- Email: admin
+
+- Password: admin
+
+From there, install the coop-account and coop-shift apps.
+
+After following these steps, you will be able to access the database with python using `odoo.py`.
+
+## Getting started (manual)
 
 ### Prerequisite
 
