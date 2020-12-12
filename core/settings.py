@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'events',
     'login',
+    'odoo'
 ]
 
 MIDDLEWARE = [
