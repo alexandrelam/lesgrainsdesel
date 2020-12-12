@@ -9,6 +9,8 @@ services:
             - .:/usr/src/app
         ports:
             - "8000:8000"
+        networks:
+            - net
         depends_on:
             - pgdb
     pgdb:
@@ -20,7 +22,11 @@ services:
             - POSTGRES_PASSWORD=postgres
         volumes:
             - pgdata:/var/lib/postgresql/data/
+        networks:
+            - net
 volumes:
     pgdata:
-
-
+        
+networks:
+  net:
+    driver: bridge

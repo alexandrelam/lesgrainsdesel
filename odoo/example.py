@@ -9,12 +9,12 @@ odoo.connect()
 #           l organisateur de l evenement
 
 # Ne pas oublier de rajouter au moins 2 evenements
-print(odoo.searchRead("event.event", [["id", "=", 2]], ["name", "organizer_id"]))
+#print(odoo.searchRead("event.event", [["id", "=", 2]], ["name", "organizer_id"]))
 # exemple : sans filtre, on affiche tous les evenements
 # verifier bien que l'id de la personne existe sinon
 # changez l id
-print(odoo.searchRead("res.partner", [['id', '=', 7]],
-                    ["name", "age", "contact_address", "phone"]))
+#print(odoo.searchRead("res.partner", [['id', '=', 7]],
+#                    ["name", "age", "contact_address", "phone"]))
 
-odoo.createEvent("ceci est un event python", "2020-11-26 20:18:18",
-                 "2020-11-27 20:18:18", 6)
+odoo.createEvent("event_test4", "2020-12-28 20:18:18",
+                 "2020-12-29 20:18:18", 6)
