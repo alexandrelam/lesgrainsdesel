@@ -67,7 +67,3 @@ class Odoo:
             return self.common.version()
         else:
             return "You need to connect first.\nExecute .setCommonEndpoint()"
-'''
-odoo.createEvent("cree avec python", "2020-11-25 20:18:18",
-                 "2020-11-26 20:18:18", 6)
-'''
