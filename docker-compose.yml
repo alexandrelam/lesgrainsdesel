@@ -1,45 +1,40 @@
 version: "3.8"
 
 services:
-    pgdb:
-        image: postgres
-        container_name: pgdb
-        environment:
-          - POSTGRES_DB=postgres
-          - POSTGRES_USER=postgres
-          - POSTGRES_PASSWORD=postgres
-        volumes:
-          - pgdata:/var/lib/postgresql/data/
-    web:
-        build: ./django
-        command: python manage.py makemigrations
-        command: python manage.py migrate
-        command: python manage.py runserver
-        volumes:
-          - ./django:/code
-        ports:
-          - "8000:8000"
-        depends_on:
-          - pgdb
-    database:
-        image: "postgres:12"
-        env_file: ./foodcoops/.env
-        restart: always
-        volumes:
-          - "odoo-pg-data:/var/lib/postgresql/data"
-    app:
-        build: ./foodcoops
-        env_file: ./foodcoops/.env
-        restart: always
-        ports:
-            - "8069:8069"
-        links:
-             - "database:database"
-        volumes:
-             - "odoo-shared-data:/home/app/.local/share/Odoo"
+  pgdb:
+    image: postgres
+    container_name: pgdb
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+  web:
+    build: ./django
+    container_name: django
+    ports:
+      - "8000:8000"
+    depends_on:
+      - pgdb
+  database:
+    image: "postgres:12"
+    env_file: ./foodcoops/.env
+    restart: always
+    volumes:
+      - "odoo-pg-data:/var/lib/postgresql/data"
+  app:
+    build: ./foodcoops
+    env_file: ./foodcoops/.env
+    restart: always
+    ports:
+      - "8069:8069"
+    links:
+      - "database:database"
+    volumes:
+      - "odoo-shared-data:/home/app/.local/share/Odoo"
 
 volumes:
-    pgdata:
-    odoo-shared-data:
-    odoo-pg-data:
-
+  pgdata:
+  odoo-shared-data:
+  odoo-pg-data:
