@@ -28,8 +28,11 @@ RUN git clone -b "$ODOO_VERSION" --single-branch --depth 1 https://github.com/od
         pip install --user psycopg2 --upgrade && \
         pip install --user XlsxWriter pysftp && \
         rm -rf /home/app/.cache/pip
+
 # - copy repo code
-ADD . /home/app/
+RUN git clone https://gitlab.com/lgds/foodcoops.git
+RUN mv foodcoops/* .
+
 # Basic configuration of Odoo
 RUN mkdir -p /home/app/.local/share/Odoo/ && mv odoo.conf /home/app/.local/share/Odoo/odoo.conf
 

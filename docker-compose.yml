@@ -1,32 +1,44 @@
 version: "3.8"
-   
+
 services:
     django:
-        build: .
+        build: ./django
         container_name: django
         command: python manage.py runserver 0.0.0.0:8000
         volumes:
             - .:/usr/src/app
         ports:
             - "8000:8000"
-        networks:
-            - net
         depends_on:
-            - pgdb
-    pgdb:
+            - pgdb_django
+    pgdb_django:
         image: postgres
-        container_name: pgdb
+        container_name: pgdb_django
         environment:
             - POSTGRES_DB=postgres
             - POSTGRES_USER=postgres
             - POSTGRES_PASSWORD=postgres
         volumes:
             - pgdata:/var/lib/postgresql/data/
-        networks:
-            - net
+    database:
+        image: "postgres:12"
+        env_file: ./foodcoops/.env
+        restart: always
+        volumes:
+          - "odoo-pg-data:/var/lib/postgresql/data"
+    app:
+        build: ./foodcoops
+        env_file: ./foodcoops/.env
+        restart: always
+        ports:
+            - "8069:8069"
+        links:
+             - "database:database"
+        volumes:
+             - "odoo-shared-data:/home/app/.local/share/Odoo"
+
 volumes:
     pgdata:
-        
-networks:
-  net:
-    driver: bridge
+    odoo-shared-data:
+    odoo-pg-data:
+
