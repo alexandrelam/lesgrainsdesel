@@ -1,25 +1,26 @@
 version: "3.8"
 
 services:
-    django:
-        build: ./django
-        container_name: django
-        command: python manage.py runserver 0.0.0.0:8000
-        volumes:
-            - .:/usr/src/app
-        ports:
-            - "8000:8000"
-        depends_on:
-            - pgdb_django
-    pgdb_django:
+    pgdb:
         image: postgres
-        container_name: pgdb_django
+        container_name: pgdb
         environment:
-            - POSTGRES_DB=postgres
-            - POSTGRES_USER=postgres
-            - POSTGRES_PASSWORD=postgres
+          - POSTGRES_DB=postgres
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=postgres
         volumes:
-            - pgdata:/var/lib/postgresql/data/
+          - pgdata:/var/lib/postgresql/data/
+    web:
+        build: ./django
+        command: python manage.py makemigrations
+        command: python manage.py migrate
+        command: python manage.py runserver
+        volumes:
+          - ./django:/code
+        ports:
+          - "8000:8000"
+        depends_on:
+          - pgdb
     database:
         image: "postgres:12"
         env_file: ./foodcoops/.env
