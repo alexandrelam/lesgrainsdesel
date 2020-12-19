@@ -17,12 +17,15 @@ services:
       - "8000:8000"
     depends_on:
       - pgdb
+    volumes:
+      - "./django:/code"
   database:
     image: "postgres:12"
     env_file: ./foodcoops/.env
     restart: always
     volumes:
       - "odoo-pg-data:/var/lib/postgresql/data"
+
   app:
     build: ./foodcoops
     env_file: ./foodcoops/.env
@@ -35,6 +38,7 @@ services:
       - "odoo-shared-data:/home/app/.local/share/Odoo"
 
 volumes:
+  code:
   pgdata:
   odoo-shared-data:
   odoo-pg-data:

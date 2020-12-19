@@ -1,8 +1,10 @@
 import xmlrpc.client
 
+
 class Odoo:
     def __init__(self):
-        self.url = 'http://foodcoops_app_1:8069'
+        self.url = 'http://localhost:8069'
+        print(url)
         self.db = 'foodcoops'
         self.username = 'admin'
         self.password = 'admin'
@@ -27,7 +29,7 @@ class Odoo:
 
     def setObjectEndpoint(self):
         self.models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(
-        self.url))
+            self.url))
 
     def connect(self):
         try:
@@ -60,7 +62,6 @@ class Odoo:
                                           'date_end': dateEnd,
                                           'organizer_id': organizerID
                                       }])
-
 
     def version(self) -> str:
         if self.common:
