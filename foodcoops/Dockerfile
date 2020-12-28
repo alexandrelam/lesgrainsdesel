@@ -7,7 +7,7 @@ ARG ODOO_VERSION=9.0
 RUN apt update && \
         apt install -y libjpeg-dev zlib1g-dev libxml2-dev libxslt1-dev libxmlsec1-dev libsasl2-dev python-dev libldap2-dev libssl-dev libpq-dev python-psycopg2 python-passlib nodejs npm postgresql-client-11 git && \
         apt-get clean && rm -rf /var/lib/apt/lists/ && \
-        npm install -g less
+        npm install -g less@3.0.4
 
 RUN adduser app
 USER app
