@@ -9,7 +9,7 @@ Application integrated with the Odoo ERP initially developed to facilitate event
 - [Getting started recommended](#getting-started-recommended)
   - [Prerequisite](#prerequisite)
   - [Installation](#installation)
-  - [Install odoo](#install-odoo)
+  - [After installation](#after-installation)
 - [Getting started (manual)](#getting-started-manual)
   - [Prerequisite](#prerequisite)
     - [Git](#git)
@@ -34,29 +34,19 @@ Application integrated with the Odoo ERP initially developed to facilitate event
 1. `git clone https://github.com/alexandrelam/lesgrainsdesel `
 2. Move to the right folder
 3. `docker-compose up`
-4. Open docker image in cli
+4. Get inside the docker container to execute the next commands
 5. `python3 manage.py migrate`
-6. `python3 manage.py createsuperuser`
-7. Run the app and go to the admin page
+6. `python3 manage.py initadmin` this commands create a superuser with the user and password set as `admin`
+7. Run the app and go to the admin page (`http://localhost:8000/admin/`)
 8. Create an event and add an `adherent` (note: images field are not required thanks to default values)
 9. Login `http://localhost:8000/login` (email=username of createsuperuser || password is password of createsuperuser)
 10. Enjoy !
 
-#### Install odoo
+#### After installation
 
-1. Déplacez vous dans le dossier de votre choix puis clonez le répo _foodcoop_ : `git clone https://gitlab.com/lgds/foodcoops`
-2. Rendez-vous dans le dossier dans lequel vous avez cloné le répo foodcoop.
-3. Exécutez la commande `docker-compose up` pour démarrer le conteneur de l'application.
-
-Once the foodcoop container is launched, go to `http: //127.0.0.1: 8069`
-
-- Email: admin
-
-- Password: admin
-
-From there, install the coop-account and coop-shift apps.
-
-After following these steps, you will be able to access the database with python using `odoo.py`.
+- You can access the django app using `http://localhost:8000`
+- You can access odoo using `http://localhost:8069`
+- Once you login in odoo using `admin` as the login and password, you need to install the following apps : coop-account and coop-shift apps.
 
 ## Getting started (manual)
 
@@ -97,10 +87,8 @@ After following these steps, you will be able to access the database with python
 
 ### Start Django app
 
-1. Download [fontawesome](https://fontawesome.com/how-to-use/on-the-web/setup/hosting-font-awesome-yourself).
-2. Extract the folder in `django/events/static/events/fontawesome-free-5.15.1-web`.
-3. Move to the folder `django`.
-4. `python manage.py runserver`
+1. Move to the folder `django`.
+2. `python manage.py runserver`
 
 ### Start Odoo
 
