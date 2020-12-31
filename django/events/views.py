@@ -19,6 +19,14 @@ def home(request, id):
     return render(request, 'events/details.html', context)
 
 @login_required(login_url='/login/')
+def create_events(request):
+    return render(request, 'events/create_events.html')
+
+@login_required(login_url='/login/')
+def participations(request):
+    return render(request, 'events/participations.html')
+
+@login_required(login_url='/login/')
 def redirect_view(request):
     response = redirect("events/1")
     return response
