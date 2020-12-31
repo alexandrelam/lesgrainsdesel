@@ -4,7 +4,6 @@ import xmlrpc.client
 class Odoo:
     def __init__(self):
         self.url = 'http://localhost:8069'
-        print(url)
         self.db = 'foodcoops'
         self.username = 'admin'
         self.password = 'admin'
