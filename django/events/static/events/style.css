@@ -256,15 +256,15 @@ a {
   /*************************************/
 
   .events-creation {
-    width: 75%;
+    width: auto;
     background-color: var(--greyBackground);
-    margin-top: 36px;
+    margin: 36px 36px 0px 36px;
     border-radius: 17px 17px 0px 0px;
     padding: 90px 50px 0 50px;
     display: flex;
     flex-direction: column;
   }
-  
+
     .events-creation .header {
       display: flex;
       align-items: center;
@@ -319,7 +319,7 @@ a {
       border: 2px solid #b7b7b7;
       border-radius: 8px;
       color: var(--unselected);
-      width: 420px;
+      width: clamp(0px,90%,420px);
       height: 40px;
     }
   
