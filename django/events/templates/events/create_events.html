@@ -1,7 +1,34 @@
-{% extends 'events/events_list.html' %} {% block details %}
-<section class="create_events">
-    <h1>Créez la page création d'événements ici</h1>
+{% extends 'events/base.html' %} {% block events_list %}
+<section class="events-creation">
+  <div class="header">
+    <div class="text">
+      <h1>Proposer un évènement</h1>
+    </div>
+  </div>
+  <div class="scroll-list-wrapper">
+    <p>Nom de l'évènement</p>
+    <input id="event-name" type="text">
+    </input>
+    <p>Localisation de l'évènement</p>
+    <input id="event-location" type="text">
+    </input>
+    <p>Type d'évènement</p>
+    <input id="event-category" type="text">
+    </input>
+    <p>Date de début</p>
+    <input id="event-start-date" type="date">
+    </input>
+    <p>Date de fin</p>
+    <input id="event-end-date" type="date">
+    </input>
+    <p>Nombre maximum de participants</p>
+    <input id="event-max-people" type="number">
+    </input>
+  </div>
+  <div class="footer">
+    <button>
+        Proposer un évènement
+    </button>
+  </div>
 </section>
-{% endblock details %}
-
-
+{% endblock events_list%}

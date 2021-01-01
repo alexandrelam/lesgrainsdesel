@@ -249,7 +249,134 @@ a {
   font-weight: 400;
   color: var(--unselected);
 }
+  /*************************************/
 
+  /*************************************/
+  /*      EVENT Création Section       */
+  /*************************************/
+
+  .events-creation {
+    width: 75%;
+    background-color: var(--greyBackground);
+    margin-top: 36px;
+    border-radius: 17px 17px 0px 0px;
+    padding: 90px 50px 0 50px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+    .events-creation .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  
+    .events-creation .header h1 {
+      font-size: 2.125rem;
+      font-weight: 700;
+    }
+  
+    .events-creation .header p {
+      color: var(--highlight);
+    }
+  
+    .events-creation button {
+      margin-top: 10px;
+      margin-bottom: 30px;
+      padding:15px;
+      background-color: var(--highlight);
+      box-shadow: var(--greenShadow);
+      border-radius: 4px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .events-creation  button:hover {
+      background-color: var(--hover-highlight);
+      cursor: pointer;
+    }
+  
+    .events-creation .scroll-list-wrapper {
+      margin-top: 30px;
+      flex-grow: 1;
+      overflow: hidden;
+    }
+  
+    .events-creation .scroll-list-wrapper:hover {
+      overflow-y: scroll;
+    }
+  
+    .events-creation .scroll-list-wrapper p{
+      margin: 20px 10px 5px 10px;
+    }
+  
+    .events-creation .scroll-list-wrapper input {
+      padding-left: 25px;
+      font-size: 14px;
+      margin-top: 1px;
+      border: 2px solid #b7b7b7;
+      border-radius: 8px;
+      color: var(--unselected);
+      width: 420px;
+      height: 40px;
+    }
+  
+    .events-creation .scroll-list-wrapper ul {
+      list-style: none;
+    }
+  
+    .events-creation .scroll-list-wrapper li {
+      display: flex;
+      margin-bottom: 28px;
+    }
+  
+    .events-creation .scroll-list-wrapper .img {
+      min-width: 100px;
+      min-height: 90px;
+      background-repeat: none;
+      background-size: cover;
+      border-radius: 17px;
+      margin-right: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .events-creation .scroll-list-wrapper .img .date {
+      text-align: center;
+      color: white;
+    }
+  
+    .events-creation .scroll-list-wrapper .img .date p {
+      font-size: 1.25rem;
+      font-weight: 400;
+    }
+  
+    .events-creation .scroll-list-wrapper .img .date h2 {
+      font-size: 2.375rem;
+      font-weight: 700;
+    }
+  
+    .events-creation .scroll-list-wrapper .text {
+      width: auto;
+    }
+  
+    .events-creation .scroll-list-wrapper .text h2 {
+      font-weight: 700;
+      font-size: 1.0625rem;
+    }
+  
+    .events-creation .scroll-list-wrapper .text .color {
+      color: var(--highlight);
+    }
+    .events-creation .scroll-list-wrapper .text p {
+      font-size: 0.8125rem;
+      font-weight: 400;
+      color: var(--unselected);
+    }
+  
 /*************************************/
 
 /*************************************/
