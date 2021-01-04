@@ -46,7 +46,7 @@ Application integrated with the Odoo ERP initially developed to facilitate event
 
 - You can access the django app using `http://localhost:8000`
 - You can access odoo using `http://localhost:8069`
-- Once you login in odoo using `admin` as the login and password, you need to install the following apps : coop-account and coop-shift apps.
+- Once you login in odoo using `admin` as the login and password, you need to install the following apps in the following order : coop-shift then coop-membership
 
 ## Getting started (manual)
 
