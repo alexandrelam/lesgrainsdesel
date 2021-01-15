@@ -27,7 +27,7 @@ services:
       - "odoo-pg-data:/var/lib/postgresql/data"
 
   app:
-    build: ./foodcoops
+    image: "registry.gitlab.com/lgds/foodcoops:9.0-cooperatic-2"
     env_file: ./foodcoops/.env
     restart: always
     ports:
