@@ -21,14 +21,14 @@ services:
       - "./django:/code"
   database:
     image: "postgres:12"
-    env_file: ./foodcoops/.env
+    env_file: .env
     restart: always
     volumes:
       - "odoo-pg-data:/var/lib/postgresql/data"
 
   app:
     image: "registry.gitlab.com/lgds/foodcoops:9.0-cooperatic-2"
-    env_file: ./foodcoops/.env
+    env_file: .env
     restart: always
     ports:
       - "8069:8069"
