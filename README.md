@@ -32,15 +32,16 @@ Application integrated with the Odoo ERP initially developed to facilitate event
 ### Installation
 
 1. `git clone https://github.com/alexandrelam/lesgrainsdesel `
-2. Move to the right folder
-3. `docker-compose up`
-4. Get inside the docker container to execute the next commands
-5. `python3 manage.py migrate`
-6. `python3 manage.py initadmin` this commands create a superuser with the user and password set as `admin`
-7. Run the app and go to the admin page (`http://localhost:8000/admin/`)
-8. Create an event and add an `adherent` (note: images field are not required thanks to default values)
-9. Login `http://localhost:8000/login` (email=username of createsuperuser || password is password of createsuperuser)
-10. Enjoy !
+2. **Renomer le dossier `lesgrainsdesel` en un autre nom !** (Odoo ne fonctionne pas lorsque le dossier s'appelle `lesgrainsdesel`)
+3. Move to the right folder
+4. `docker-compose up`
+5. Get inside the docker container to execute the next commands
+6. `python3 manage.py migrate`
+7. `python3 manage.py initadmin` this commands create a superuser with the user and password set as `admin`
+8. Run the app and go to the admin page (`http://localhost:8000/admin/`)
+9. Create an event and add an `adherent` (note: images field are not required thanks to default values)
+10. Login `http://localhost:8000/login` (email=username of createsuperuser || password is password of createsuperuser)
+11. Enjoy !
 
 #### After installation
 
