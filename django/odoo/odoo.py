@@ -3,7 +3,7 @@ import xmlrpc.client
 
 class Odoo:
     def __init__(self):
-        self.url = 'http://localhost:8069'
+        self.url = 'http://172.27.0.1:8069'
         self.db = 'foodcoops'
         self.username = 'admin'
         self.password = 'admin'
@@ -33,11 +33,13 @@ class Odoo:
     def connect(self):
         try:
             self.setCommonEndpoint()
+            print("passed commond endpoint")
             self.authenticate()
+            print("passed auth")
             self.setObjectEndpoint()
             print("Connection successful ! ")
-        except:
-            print("Connection failed :(")
+        except Exception as e:
+            print(e)
 
     def searchRead(self, dbTable: str, filters: [str], fields: [str]):
         if self.models:
