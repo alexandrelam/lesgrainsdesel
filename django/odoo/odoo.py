@@ -33,7 +33,7 @@ class Odoo:
     def connect(self):
         try:
             self.setCommonEndpoint()
-            print("passed commond endpoint")
+            print("passed common endpoint")
             self.authenticate()
             print("passed auth")
             self.setObjectEndpoint()
@@ -43,7 +43,15 @@ class Odoo:
 
     def searchRead(self, dbTable: str, filters: [str], fields: [str]):
         if self.models:
-            return self.models.execute_kw(self.db, self.uid, self.password, dbTable, 'search_read', [filters], {'fields': fields})
+            return self.models.execute_kw(self.db, self.uid, self.password, dbTable,
+                                            'search_read', [filters], {'fields': fields})
+
+
+    def searchPartnerByBirthdate(self, birthdate):
+        return self.models.execute_kw(self.db, self.uid, self.password, 'res.partner',
+                'search_read',[[['birthdate', '=', birthdate]]], {'fields': ['name', 'id'], 'limit': 5})
+
+
 
     '''
     odoo.createEvent("cree avec python", "2020-11-25 20:18:18",
