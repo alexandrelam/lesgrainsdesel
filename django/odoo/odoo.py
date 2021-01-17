@@ -49,7 +49,7 @@ class Odoo:
 
     def searchPartnerByBirthdate(self, birthdate):
         return self.models.execute_kw(self.db, self.uid, self.password, 'res.partner',
-                'search_read',[[['birthdate', '=', birthdate]]], {'fields': ['name', 'id'], 'limit': 5})
+                'search_read',[[['birthdate', '=', birthdate]]], {'fields': ['name', 'id']})
 
 
 
