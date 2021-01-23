@@ -11,16 +11,21 @@ def home(request, id):
         context = {'eventsList': sorted_events_list}
         context["selected"] = Event.objects.get(id=id)
         context["participation"] = Participation.objects.filter(event__id=id)
-        current_user = request.user
-        context["current_user"] = current_user
-        context["adherent"] = Adherent.objects.all().filter(user__id=current_user.id)[0]
     else:
         context = {}
+    
+    current_user = request.user
+    context["current_user"] = current_user
+    context["adherent"] = Adherent.objects.all().filter(user__id=current_user.id)[0]
     return render(request, 'events/details.html', context)
 
 @login_required(login_url='/login/')
 def create_events(request):
-    return render(request, 'events/create_events.html')
+    context = {}
+    current_user = request.user
+    context["current_user"] = current_user
+    context["adherent"] = Adherent.objects.all().filter(user__id=current_user.id)[0]
+    return render(request, 'events/create_events.html', context)
 
 @login_required(login_url='/login/')
 def participations(request):

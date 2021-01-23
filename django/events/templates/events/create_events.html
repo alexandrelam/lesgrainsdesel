@@ -1,7 +1,35 @@
 {% extends 'events/events_list.html' %} {% block details %}
-<section class="create_events">
-    <h1>Créez la page création d'événements ici</h1>
+<!--Utiliser la version de production apres-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<section class="create_events details" id="create_events_app">
+    <div>
+        <div class="header">
+            <div class="profile-picture" style="background-image : url('{{ adherent.picture.url }}')"></div>
+            <div>
+                <h2>{{current_user.first_name}} {{current_user.last_name}}</h2>
+                <p>adhérent</p>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content-wrapper">
+                <div class="text">
+                    <h1>Proposer un événements</h1>
+                </div>
+                <div class=forms>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
+<script>
+    var create_events_app = new Vue({
+        el: '#create_events_app',
+        delimiters: ['[[', ']]'],
+        data: {
+            page_index: 1,
+        }
+    });
+</script>
 {% endblock details %}
-
-

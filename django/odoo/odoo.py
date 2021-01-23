@@ -1,9 +1,10 @@
 import xmlrpc.client
+import sys
 
 
 class Odoo:
     def __init__(self):
-        self.url = 'http://172.27.0.1:8069'
+        self.url = 'http://172.19.0.1:8069'
         self.db = 'foodcoops'
         self.username = 'admin'
         self.password = 'admin'
@@ -32,14 +33,24 @@ class Odoo:
 
     def connect(self):
         try:
+            print("trying to set common endpoint ...")
             self.setCommonEndpoint()
             print("passed common endpoint")
+            print("trying to authenticate ...")
             self.authenticate()
             print("passed auth")
+            print("trying to set object endpoint ...")
             self.setObjectEndpoint()
             print("Connection successful ! ")
+            print("common endpoint: ", self.common)
+            print("models: ", self.models)
+            print("uid: ", self.uid)
         except Exception as e:
             print(e)
+            print("common endpoint: ", self.common)
+            print("models: ", self.models)
+            print("uid: ", self.uid)
+            sys.exit()
 
     def searchRead(self, dbTable: str, filters: [str], fields: [str]):
         if self.models:
