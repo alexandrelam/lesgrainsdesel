@@ -25,7 +25,7 @@
                         </div>
                         <div class="input-container">
                             <label for="description">Description</label>
-                            <input id="text-input" type="text" name="description">
+                            <textarea id="text-input" cols="40" rows="5"></textarea>
                         </div>
                     </div>
                     <div v-show="page_index == 2">
@@ -82,6 +82,7 @@
     }
 
     .input-container input[type="text"],
+    .input-container textarea,
     .input-container input[type="datetime-local"] {
         height: 42px;
         padding: 5px;
@@ -96,7 +97,7 @@
         font-weight: 700;
     }
 
-    .input-container .description {
+    .input-container textarea {
         height: 120px;
     }
 
@@ -122,4 +123,4 @@
         background-color: var(--highlight);
     }
 </style>
-{% endblock details %}&
+{% endblock details %}
