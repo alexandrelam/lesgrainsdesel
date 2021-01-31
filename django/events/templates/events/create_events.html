@@ -14,17 +14,17 @@
         <div class="content">
             <div class="content-wrapper">
                 <div class="text">
-                    <h1>Proposer un événements</h1>
+                    <h1 class="form-title">Proposer un événements</h1>
                 </div>
                 <form id="form" method="post" role="form">
                     {% csrf_token %}
                     <div v-show="page_index == 1">
                         <div class="input-container">
-                            <label for="email">Titre de l'événement</label>
-                            <input id="text-input" type="text" name="titre">
+                            <label for="titre">Titre de l'événement</label>
+                            <input id="text-input description" type="text" name="titre">
                         </div>
                         <div class="input-container">
-                            <label for=" password">Description</label>
+                            <label for="description">Description</label>
                             <input id="text-input" type="text" name="description">
                         </div>
                     </div>
@@ -48,10 +48,15 @@
                             <input type="file" name="img-couverture" accept="image/png, image/jpg, image/jpeg">
                         </div>
                     </div>
-                    <input type="submit" value="Se connecter">
                 </form>
-                <button v-if="page_index != 1" @click="page_index--">previous</button>
-                <button v-if="page_index != 3" @click="page_index++">next</button>
+                <div class="form-btn-container">
+                    <div class="btn-previous btn-form">
+                        <button v-if="page_index != 1" @click="page_index--">Précédent</button>
+                    </div>
+                    <div class="btn-next btn-form">
+                        <button v-if="page_index != 3" @click="page_index++">Suivant</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -65,4 +70,56 @@
         },
     });
 </script>
-{% endblock details %}
+<style>
+    .form-title {
+        margin-bottom: 54px;
+    }
+
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 36px;
+    }
+
+    .input-container input[type="text"],
+    .input-container input[type="datetime-local"] {
+        height: 42px;
+        padding: 5px;
+        border: none;
+        border: solid 1px var(--unselected);
+        border-radius: 8px;
+    }
+
+    .input-container label {
+        margin-bottom: 6px;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .input-container .description {
+        height: 120px;
+    }
+
+    .form-btn-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 70px;
+    }
+
+    .form-btn-container .btn-form,
+    .form-btn-container button {
+        width: 170px;
+        height: 56px;
+        border-radius: 8px;
+        color: white;
+    }
+
+    .form-btn-container .btn-previous button {
+        background-color: var(--unselected);
+    }
+
+    .form-btn-container .btn-next button {
+        background-color: var(--highlight);
+    }
+</style>
+{% endblock details %}&
