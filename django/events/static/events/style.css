@@ -267,6 +267,7 @@ a {
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
+  width: 500px;
 }
 
 .details .header h2 {
@@ -281,7 +282,7 @@ a {
   color: var(--highlight);
 }
 
-.details .header .profile-picture {
+.header .profile-picture {
   background-repeat: none;
   background-size: cover;
   background-position: bottom;
@@ -321,12 +322,12 @@ a {
 
 .details .content .text {
   margin: auto;
-  max-width: 500px;
+  width: 500px;
 }
 
 .details .content .text h1 {
   font-size: 1.5rem;
-  margin-top: 24px;
+  margin-top: 28px;
 }
 
 .details .content .text p {
@@ -436,7 +437,8 @@ a {
   .details .content,
   .details .content-wrapper,
   .details .content .img,
-  .details .header {
+  .details .header,
+  .details .content .text {
     width: 350px;
   }
 

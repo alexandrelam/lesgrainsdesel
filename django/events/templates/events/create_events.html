@@ -1,7 +1,125 @@
 {% extends 'events/events_list.html' %} {% block details %}
-<section class="create_events">
-    <h1>Créez la page création d'événements ici</h1>
+<!--Utiliser la version de production apres-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<section class="create_events details" id="create_events_app">
+    <div>
+        <div class="header">
+            <div class="profile-picture" style="background-image : url('{{ adherent.picture.url }}')"></div>
+            <div>
+                <h2>{{current_user.first_name}} {{current_user.last_name}}</h2>
+                <p>adhérent</p>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content-wrapper">
+                <div class="text">
+                    <h1 class="form-title">Proposer un événements</h1>
+                </div>
+                <form id="form" method="post" role="form">
+                    {% csrf_token %}
+                    <div v-show="page_index == 1">
+                        <div class="input-container">
+                            <label for="titre">Titre de l'événement</label>
+                            <input id="text-input description" type="text" name="titre">
+                        </div>
+                        <div class="input-container">
+                            <label for="description">Description</label>
+                            <input id="text-input" type="text" name="description">
+                        </div>
+                    </div>
+                    <div v-show="page_index == 2">
+                        <div class="input-container">
+                            <label for="time-start">Date de début</label>
+                            <input id="text-input" type="datetime-local" name="time-start">
+                        </div>
+                        <div class="input-container">
+                            <label for="time-end">Date de fin</label>
+                            <input id="text-input" type="datetime-local" name="time-end">
+                        </div>
+                    </div>
+                    <div v-show="page_index == 3">
+                        <div class="input-container">
+                            <label for="img-icon">Image icon</label>
+                            <input type="file" name="img-icon" accept="image/png, image/jpg, image/jpeg">
+                        </div>
+                        <div class="input-container">
+                            <label for="img-couverture">Image de couverture</label>
+                            <input type="file" name="img-couverture" accept="image/png, image/jpg, image/jpeg">
+                        </div>
+                    </div>
+                </form>
+                <div class="form-btn-container">
+                    <div class="btn-previous btn-form">
+                        <button v-if="page_index != 1" @click="page_index--">Précédent</button>
+                    </div>
+                    <div class="btn-next btn-form">
+                        <button v-if="page_index != 3" @click="page_index++">Suivant</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
-{% endblock details %}
+<script>
+    var create_events_app = new Vue({
+        el: '#create_events_app',
+        delimiters: ['[[', ']]'],
+        data: {
+            page_index: 1,
+        },
+    });
+</script>
+<style>
+    .form-title {
+        margin-bottom: 54px;
+    }
 
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 36px;
+    }
 
+    .input-container input[type="text"],
+    .input-container input[type="datetime-local"] {
+        height: 42px;
+        padding: 5px;
+        border: none;
+        border: solid 1px var(--unselected);
+        border-radius: 8px;
+    }
+
+    .input-container label {
+        margin-bottom: 6px;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .input-container .description {
+        height: 120px;
+    }
+
+    .form-btn-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 70px;
+    }
+
+    .form-btn-container .btn-form,
+    .form-btn-container button {
+        width: 170px;
+        height: 56px;
+        border-radius: 8px;
+        color: white;
+    }
+
+    .form-btn-container .btn-previous button {
+        background-color: var(--unselected);
+    }
+
+    .form-btn-container .btn-next button {
+        background-color: var(--highlight);
+    }
+</style>
+{% endblock details %}&
