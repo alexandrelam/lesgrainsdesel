@@ -63,6 +63,9 @@ class Odoo:
                 'search_read',[[['birthdate', '=', birthdate]]], {'fields': ['name', 'id']})
 
 
+    def searchPartnerByName(self, name):
+        return self.models.execute_kw(self.db, self.uid, self.password, 'res.partner',
+                'search_read',[[['name', '=', name]]], {'fields': ['birthdate', 'id']})
 
     '''
     odoo.createEvent("cree avec python", "2020-11-25 20:18:18",

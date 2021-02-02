@@ -18,7 +18,10 @@ odoo.connect()
 #                    ["name", "id", "birthdate"]))
 
 
+
 print(odoo.searchPartnerByBirthdate("2000-12-30"))
 
+
+print(odoo.searchPartnerByName("Test1"))
 #odoo.createEvent("event_test5", "2020-12-28 20:18:18",
 #                 "2020-12-29 20:18:18", 6)
