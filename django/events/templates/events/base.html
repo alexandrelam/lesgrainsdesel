@@ -21,7 +21,7 @@
     </div>
     <div class="nav-item-wrapper">
       <ul>
-        <li>
+        <li class="{% if page == 'home' %} selected {% endif %}">
           <div class="icon">
             <i class="far fa-calendar-alt"></i>
           </div>
@@ -29,7 +29,7 @@
             <p>Les événements</p>
           </a>
         </li>
-        <li>
+        <li class="{% if page == 'create_events' %} selected {% endif %}">
           <div class="icon">
             <i class="far fa-calendar-plus"></i>
           </div>
@@ -37,7 +37,7 @@
             <p>Créer un évènement</p>
           </a>
         </li>
-        <li>
+        <li class="{% if page == 'participations' %} selected {% endif %}">
           <div class="icon">
             <i class="far fa-calendar-check"></i>
           </div>
