@@ -110,11 +110,11 @@ a {
   transition-duration: 0.4s;
 }
 
-#nav .nav-item-wrapper li:first-child {
+#nav .nav-item-wrapper .selected {
   color: var(--highlight);
 }
 
-#nav .nav-item-wrapper li:first-child .icon {
+#nav .nav-item-wrapper .selected .icon {
   width: 25px;
   height: 25px;
   color: white;

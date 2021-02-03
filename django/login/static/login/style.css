@@ -87,14 +87,6 @@ body {
   height: 40px;
 }
 
-.form .content .stay-login {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  font-size: 0.875rem;
-  font-weight: 400;
-}
-
 .form .content input[type="submit"] {
   width: 420px;
   height: 50px;
