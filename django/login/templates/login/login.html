@@ -16,7 +16,9 @@
 </head>
 
 <body>
-  <section class="form">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <section class="form" id="login_app">
     <div class="wrapper">
       <img src="{% static 'login/logo.png' %}" alt="logo" id="logo">
       <div class="content">
@@ -31,14 +33,16 @@
               <label for="email">Email</label>
               <input id="text-input" type="text" name="email" placeholder="nom@domaine.com">
             </div>
-            <div class="input-container">
-              <label for=" password">Mot de Passe</label>
+            <div class="input-container" v-if="isAdmin">
+              <label for="password">Mot de Passe</label>
               <input id="text-input" type="password" name="password" placeholder="au moins 8 caractères">
             </div>
-            <div class="stay-login">
-              <input type="checkbox">
-              <span>Rester connecté</span>
+            <div class="input-container" v-else>
+              <label for="password">Date de naissance</label>
+              <input id="text-input" type="text" name="password" placeholder="30/12/2000">
             </div>
+            <a href="#" v-if="isAdmin" @click="isAdmin=false">Je ne suis pas admin</a>
+            <a href="#" v-else @click="isAdmin=true">Je suis admin</a>
             <input type="submit" value="Se connecter">
           </form>
         </div>
@@ -86,6 +90,15 @@
       </a>
     </div>
   </section>
+  <script>
+    var login_app = new Vue({
+      el: '#login_app',
+      delimiters: ['[[', ']]'],
+      data: {
+        isAdmin: false,
+      },
+    });
+  </script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
