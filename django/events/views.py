@@ -37,8 +37,12 @@ def create_events(request):
         description = request.POST["description"]
         time_start = request.POST["time-start"]
         time_end = request.POST["time-end"]
-        img_icon = request.FILES["img-icon"]
-        img_couverture = request.FILES["img-couverture"]
+        img_icon = None
+        img_couverture = None
+        if len(request.FILES):
+            img_icon = request.FILES["img-icon"]
+            img_couverture = request.FILES["img-couverture"]
+
         if titre and description and time_start and time_end:
             event = Event()
             event.title = titre
@@ -67,9 +71,18 @@ def participations(request):
 
 @login_required(login_url='/login/')
 def redirect_view(request):
-    first_event_id = Event.objects.order_by('date_begin').first().id
-    response = redirect("events/" + str(first_event_id))
+    if(Event.objects.all()):
+        first_event_id = Event.objects.order_by('date_begin').first().id
+        response = redirect("events/" + str(first_event_id))
+    else:
+        response = redirect("events/")
     return response
+
+
+@login_required(login_url='/login')
+def noEvents(request):
+    context = {"page": "home"}
+    return render(request, 'events/events_list.html', context)
 
 
 @login_required(login_url='/login/')
