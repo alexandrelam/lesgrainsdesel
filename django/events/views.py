@@ -21,6 +21,10 @@ def home(request, id):
     context["adherent"] = Adherent.objects.all().filter(
         user__id=current_user.id)[0]
     context["page"] = "home"
+    context["event_id"] = id
+    context["participe"] = False
+    if Participation.objects.filter(Adherent__user__id=current_user.id, event__id=id):
+        context["participe"] = True
     return render(request, 'events/details.html', context)
 
 
@@ -166,6 +170,24 @@ def redirect_view(request):
 def noEvents(request):
     context = {"page": "home"}
     return render(request, 'events/events_list.html', context)
+
+
+@login_required(login_url='/login/')
+def inscription_participation(request, id):
+    participation = Participation()
+    participation.event = Event.objects.get(pk=id)
+    adherent_id = Adherent.objects.get(user__id=request.user.id).pk
+    participation.Adherent = Adherent.objects.get(pk=adherent_id)
+    participation.save()
+    return redirect('home')
+
+
+@login_required(login_url='/login/')
+def desinscription_participation(request, id):
+    participation = Participation.objects.get(
+        Adherent__user__id=request.user.id, event__id=id)
+    participation.delete()
+    return redirect('home')
 
 
 @login_required(login_url='/login/')

@@ -12,6 +12,10 @@ urlpatterns = [
          name="create_modify_event"),
     path('create/delete/<id>', views.delete_events, name="delete_events"),
     path('create/', views.create_events, name="create_events"),
+    path('inscription_participation/<id>',
+         views.inscription_participation, name="inscription_participation"),
+    path('desinscription_participation/<id>',
+         views.desinscription_participation, name="desinscription_participation"),
     path('participations/', views.participations, name="participations"),
     path('admin_page/', views.admin_page, name="admin_page"),
 ]

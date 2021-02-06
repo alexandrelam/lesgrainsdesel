@@ -11,12 +11,23 @@
     <div class="content">
       <div class="content-wrapper">
         <div class="img" style="background-image: url('{{selected.image.url}}')"></div>
+        <div class="small">
+          <div class="icon">
+            <i class="far fa-user-circle"></i>
+          </div>
+          <p>{{participation.count}} personnes participent</p>
+        </div>
         <div class="text">
           <h1>{{ selected.title }}</h1>
           <p>{{ selected.long_description }}</p>
         </div>
         <div class="call-to-action">
-          <a href="#"><button class="primary">Je participe</button></a>
+          {% if participe %}
+          <a href="{% url 'desinscription_participation' id=event_id %}"><button class="danger">X</button></a>
+          {% else %}
+          <a href="{% url 'inscription_participation' id=event_id %}"><button class="primary">Je
+              participe</button></a>
+          {% endif %}
           <div class="sub-text">
             <p><strong>{{selected.date_begin|date:"d M Y"}}</strong></p>
             <p>
