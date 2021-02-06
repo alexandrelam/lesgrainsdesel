@@ -45,6 +45,14 @@
             <p>Mes participations</p>
           </a>
         </li>
+        <li class="{% if page == 'admin' %} selected {% endif %}">
+          <div class="icon">
+            <i class="fas fa-toolbox"></i>
+          </div>
+          <a href="{% url 'admin_page' %}">
+            <p>Admin</p>
+          </a>
+        </li>
         <li>
           <div class="icon">
             <i class="fas fa-sign-out-alt"></i>
