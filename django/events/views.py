@@ -31,6 +31,30 @@ def create_events(request):
     context["adherent"] = Adherent.objects.all().filter(
         user__id=current_user.id)[0]
     context["page"] = "create_events"
+
+    if request.method == 'POST':
+        titre = request.POST["titre"]
+        description = request.POST["description"]
+        time_start = request.POST["time-start"]
+        time_end = request.POST["time-end"]
+        img_icon = request.FILES["img-icon"]
+        img_couverture = request.FILES["img-couverture"]
+        if titre and description and time_start and time_end:
+            event = Event()
+            event.title = titre
+            event.short_description = description
+            event.long_description = description
+            event.date_begin = time_start
+            event.date_end = time_end
+
+            if img_icon:
+                event.icon = img_icon
+
+            if img_couverture:
+                event.image = img_couverture
+
+            event.save()
+
     return render(request, 'events/create_events.html', context)
 
 

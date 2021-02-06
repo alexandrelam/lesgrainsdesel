@@ -16,7 +16,7 @@
                 <div class="text">
                     <h1 class="form-title">Proposer un événements</h1>
                 </div>
-                <form id="form" method="post" role="form">
+                <form id="form" method="post" role="form" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div v-show="page_index == 1">
                         <div class="input-container">
@@ -25,7 +25,7 @@
                         </div>
                         <div class="input-container">
                             <label for="description">Description</label>
-                            <textarea id="text-input" cols="40" rows="5"></textarea>
+                            <textarea name="description" id="text-input" cols="40" rows="5"></textarea>
                         </div>
                     </div>
                     <div v-show="page_index == 2">
@@ -48,15 +48,19 @@
                             <input type="file" name="img-couverture" accept="image/png, image/jpg, image/jpeg">
                         </div>
                     </div>
+                    <div class="form-btn-container">
+                        <div class="btn-previous btn-form">
+                            <div class="btn" v-if="page_index != 1" @click="page_index--">Précédent</div>
+                        </div>
+                        <div class="btn-next btn-form">
+                            <div class="btn" v-if="page_index != 3" @click="page_index++">Suivant</div>
+                        </div>
+                        <div class="btn-next btn-form" v-if="page_index == 3">
+                            <button class="btn" type="submit">Valider</button>
+                        </div>
+                    </div>
                 </form>
-                <div class="form-btn-container">
-                    <div class="btn-previous btn-form">
-                        <button v-if="page_index != 1" @click="page_index--">Précédent</button>
-                    </div>
-                    <div class="btn-next btn-form">
-                        <button v-if="page_index != 3" @click="page_index++">Suivant</button>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
@@ -108,18 +112,25 @@
     }
 
     .form-btn-container .btn-form,
-    .form-btn-container button {
+    .form-btn-container .btn {
         width: 170px;
         height: 56px;
         border-radius: 8px;
         color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: 100%;
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
     }
 
-    .form-btn-container .btn-previous button {
+    .form-btn-container .btn-previous .btn {
         background-color: var(--unselected);
     }
 
-    .form-btn-container .btn-next button {
+    .form-btn-container .btn-next .btn {
         background-color: var(--highlight);
     }
 </style>
