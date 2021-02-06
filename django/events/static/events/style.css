@@ -7,6 +7,9 @@ html {
   --unselected: #a2a9c8;
   --highlight: #5fcf8c;
   --hover-highlight: #4eb276;
+  --danger: #ff4d4f;
+  --hover-danger: #f5222d;
+  --dangerShadow: 0px 4px 8px 1px rgba(255, 77, 79, 0.35);
   --greyBackground: #f7f7f7;
   --greenShadow: 0px 4px 8px 1px rgba(95, 207, 140, 0.35);
   --menuShadow: 0px 0px 33px rgba(0, 0, 0, 0.15);
@@ -343,7 +346,7 @@ a {
   margin-top: 80px;
 }
 
-.details .call-to-action button {
+.details .call-to-action .primary {
   padding: 17px 30px;
   border: none;
   background-color: var(--highlight);
@@ -355,8 +358,25 @@ a {
   box-shadow: var(--greenShadow);
 }
 
-.details .call-to-action button:hover {
+.details .call-to-action .primary:hover {
   background-color: var(--hover-highlight);
+  cursor: pointer;
+}
+
+.details .call-to-action .danger {
+  padding: 17px 30px;
+  border: none;
+  background-color: var(--danger);
+  font-family: "Inter";
+  font-weight: 700;
+  color: white;
+  font-size: 0.875rem;
+  border-radius: 8px;
+  box-shadow: var(--dangerShadow);
+}
+
+.details .call-to-action .danger:hover {
+  background-color: var(--hover-danger);
   cursor: pointer;
 }
 

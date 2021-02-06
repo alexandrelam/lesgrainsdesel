@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/login/')
 def home(request, id):
-    if Event.objects.count() != 0:
+    if Event.objects.count():
         sorted_events_list = Event.objects.order_by('date_begin')
         context = {'eventsList': sorted_events_list}
         context["selected"] = Event.objects.get(id=id)
@@ -31,6 +31,9 @@ def create_events(request):
     context["adherent"] = Adherent.objects.all().filter(
         user__id=current_user.id)[0]
     context["page"] = "create_events"
+
+    context["eventsList"] = Event.objects.filter(
+        author_id=current_user.id).order_by("date_begin")
 
     if request.method == 'POST':
         titre = request.POST["titre"]
@@ -62,6 +65,23 @@ def create_events(request):
             event.save()
 
     return render(request, 'events/create_events.html', context)
+
+
+@login_required(login_url='/login/')
+def create_events_details(request, id):
+    context = {}
+    current_user = request.user
+    context["current_user"] = current_user
+    context["page"] = "create_events"
+    context["eventsList"] = Event.objects.filter(
+        author_id=current_user.id).order_by("date_begin")
+    context["adherent"] = Adherent.objects.all().filter(
+        user__id=current_user.id)[0]
+
+    if Event.objects.count():
+        context["selected"] = Event.objects.get(id=id)
+
+    return render(request, 'events/create_details.html', context)
 
 
 @login_required(login_url='/login/')
