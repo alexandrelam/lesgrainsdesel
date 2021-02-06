@@ -16,6 +16,7 @@ urlpatterns = [
          views.inscription_participation, name="inscription_participation"),
     path('desinscription_participation/<id>',
          views.desinscription_participation, name="desinscription_participation"),
-    path('participations/', views.participations, name="participations"),
+    path('participations/<id>', views.participations),
+    path('participations/', views.participations_redirect, name="participations"),
     path('admin_page/', views.admin_page, name="admin_page"),
 ]
