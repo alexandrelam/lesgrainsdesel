@@ -39,12 +39,14 @@ def create_events(request):
         time_end = request.POST["time-end"]
         img_icon = None
         img_couverture = None
+        author_id = request.user.id
         if len(request.FILES):
             img_icon = request.FILES["img-icon"]
             img_couverture = request.FILES["img-couverture"]
 
         if titre and description and time_start and time_end:
             event = Event()
+            event.author_id = author_id
             event.title = titre
             event.short_description = description
             event.long_description = description
