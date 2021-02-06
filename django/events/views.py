@@ -83,6 +83,7 @@ def create_events_details(request, id):
     context["adherent"] = Adherent.objects.all().filter(
         user__id=current_user.id)[0]
     context["event_id"] = id
+    context["participation"] = Participation.objects.filter(event__id=id)
 
     if Event.objects.count():
         context["selected"] = Event.objects.get(id=id)
