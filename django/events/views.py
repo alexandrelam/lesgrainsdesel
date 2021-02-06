@@ -77,11 +77,20 @@ def create_events_details(request, id):
         author_id=current_user.id).order_by("date_begin")
     context["adherent"] = Adherent.objects.all().filter(
         user__id=current_user.id)[0]
+    context["event_id"] = id
 
     if Event.objects.count():
         context["selected"] = Event.objects.get(id=id)
 
     return render(request, 'events/create_details.html', context)
+
+
+@login_required(login_url='/login/')
+def delete_events(request, id):
+    current_obj = Event.objects.get(pk=id)
+    if request.user.id == current_obj.author_id:
+        current_obj.delete()
+    return redirect("/create/")
 
 
 @login_required(login_url='/login/')
