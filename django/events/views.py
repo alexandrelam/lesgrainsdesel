@@ -176,12 +176,18 @@ def participations(request, id):
 
 @login_required(login_url='/login/')
 def participations_redirect(request):
-    if(Event.objects.all()):
+    if(Participation.objects.filter(Adherent__user__id=request.user.id).order_by("event__date_begin")):
         first_event_id = Event.objects.order_by('date_begin').first().id
         response = redirect("/participations/" + str(first_event_id))
     else:
         response = redirect("/participations/")
     return response
+
+
+@login_required(login_url='/login/')
+def noParticipations(request):
+    context = {"page": "participations"}
+    return render(request, "events/events_list.html", context)
 
 
 @login_required(login_url='/login/')
