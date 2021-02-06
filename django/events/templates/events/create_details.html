@@ -22,7 +22,7 @@
                     <p>{{ selected.long_description }}</p>
                 </div>
                 <div class="call-to-action">
-                    <a href="#"><button class="primary">Modifier</button></a>
+                    <a href="{% url 'create_modify_event' id=event_id %}"><button class="primary">Modifier</button></a>
                     <a href="{% url 'delete_events' id=event_id %}"><button class="danger">Supprimer</button></a>
                     <div class="sub-text">
                         <p><strong>{{selected.date_begin|date:"d M Y"}}</strong></p>
