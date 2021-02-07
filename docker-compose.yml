@@ -3,7 +3,7 @@ version: "3.8"
 services:
   pgdb:
     image: postgres
-    container_name: pgdb
+    container_name: pgdb_django
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
@@ -53,5 +53,5 @@ volumes:
   odoo-pg-data:
 
 networks:
-    local:
-        driver: bridge 
+  local:
+    driver: bridge

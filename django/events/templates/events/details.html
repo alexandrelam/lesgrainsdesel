@@ -2,10 +2,7 @@
 <section class="details">
   <div>
     <div class="header">
-      <div
-        class="profile-picture"
-        style="background-image : url('{{ adherent.picture.url }}')"
-      ></div>
+      <div class="profile-picture" style="background-image : url('{{ adherent.picture.url }}')"></div>
       <div>
         <h2>{{current_user.first_name}} {{current_user.last_name}}</h2>
         <p>adhérent</p>
@@ -13,10 +10,7 @@
     </div>
     <div class="content">
       <div class="content-wrapper">
-        <div
-          class="img"
-          style="background-image: url('{{selected.image.url}}')"
-        ></div>
+        <div class="img" style="background-image: url('{{selected.image.url}}')"></div>
         <div class="small">
           <div class="icon">
             <i class="far fa-user-circle"></i>
@@ -28,7 +22,12 @@
           <p>{{ selected.long_description }}</p>
         </div>
         <div class="call-to-action">
-          <a href="#"><button>Je participe</button></a>
+          {% if participe %}
+          <a href="{% url 'desinscription_participation' id=event_id %}"><button class="danger">X</button></a>
+          {% else %}
+          <a href="{% url 'inscription_participation' id=event_id %}"><button class="primary">Je
+              participe</button></a>
+          {% endif %}
           <div class="sub-text">
             <p><strong>{{selected.date_begin|date:"d M Y"}}</strong></p>
             <p>
