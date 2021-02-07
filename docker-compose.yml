@@ -10,8 +10,6 @@ services:
       - POSTGRES_PASSWORD=postgres
     volumes:
       - pgdata:/var/lib/postgresql/data/
-    networks:
-      - local
   web:
     build: ./django
     container_name: django
@@ -21,8 +19,6 @@ services:
       - pgdb
     volumes:
       - "./django:/code"
-    networks:
-      - local
 
   database:
     image: "postgres:12"
@@ -30,8 +26,6 @@ services:
     restart: always
     volumes:
       - "odoo-pg-data:/var/lib/postgresql/data"
-    networks:
-      - local
 
   app:
     image: "registry.gitlab.com/lgds/foodcoops:9.0-cooperatic-2"
@@ -43,8 +37,6 @@ services:
       - "database:database"
     volumes:
       - "odoo-shared-data:/home/app/.local/share/Odoo"
-    networks:
-      - local
 
 volumes:
   code:
@@ -52,6 +44,3 @@ volumes:
   odoo-shared-data:
   odoo-pg-data:
 
-networks:
-  local:
-    driver: bridge

@@ -1,4 +1,5 @@
 from odoo import Odoo
+import json
 
 odoo = Odoo()
 
@@ -18,8 +19,13 @@ odoo.connect()
 #                    ["name", "id", "birthdate"]))
 
 
+result = odoo.searchPartnerByBirthdate("1995-03-07")
+data = result[0]
+output = tuple(data.items())
+print(output)
 
-print(odoo.searchPartnerByBirthdate("2000-12-30"))
+print(type(data))
+print(type(output))
 
 
 print(odoo.searchPartnerByName("Test1"))

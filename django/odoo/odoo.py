@@ -1,10 +1,11 @@
 import xmlrpc.client
 import sys
+import json 
 
 
 class Odoo:
     def __init__(self):
-        self.url = 'http://172.19.0.1:8069'
+        self.url = 'http://lesgrainsdesel_app_1:8069'
         self.db = 'foodcoops'
         self.username = 'admin'
         self.password = 'admin'
@@ -59,8 +60,10 @@ class Odoo:
 
 
     def searchPartnerByBirthdate(self, birthdate):
-        return self.models.execute_kw(self.db, self.uid, self.password, 'res.partner',
+        data = self.models.execute_kw(self.db, self.uid, self.password, 'res.partner',
                 'search_read',[[['birthdate', '=', birthdate]]], {'fields': ['name', 'id']})
+        #output = json.loads(data)
+        return data 
 
 
     def searchPartnerByName(self, name):
