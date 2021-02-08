@@ -12,7 +12,8 @@ def login_view(request):
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
-        user = accounts_models.authenticate(request, email, password, False)
+        OdooBackend = accounts_models.OdooBackend()
+        user = OdooBackend.authenticate(request, email, password, False)
         if user is not None and user.is_active:
             login(request, user)
             return redirect(events_views.redirect_view)

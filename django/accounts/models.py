@@ -47,14 +47,6 @@ class User(AbstractBaseUser):
 
 class OdooBackend (BaseBackend):
 
-    def authenticate(self, request, username=None, password=None, isOdooUser=False):
-        if isOdooUser:
-            user = authenticateOdooUser(self, request, username, password)
-            return user
-        else:
-            user = authenticatePartner(self, request, username, password)
-            return user
-
     def authenticatePartner(self, request, username=None, password=None):
         odoo.connect()
         user = None
@@ -65,6 +57,14 @@ class OdooBackend (BaseBackend):
                     username, tuple(i)[0][1], False, False)
 
         return user
+
+    def authenticate(self, request, username=None, password=None, isOdooUser=False):
+        if isOdooUser:
+            user = self.authenticateOdooUser(request, username, password)
+            return user
+        else:
+            user = self.authenticatePartner(request, username, password)
+            return user
 
     def authenticateOdooUser(self, request, usename=None, password=None):
         return None
