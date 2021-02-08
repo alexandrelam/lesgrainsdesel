@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'fontawesome-free',
     'events',
     'login',
-    'odoo'
+    'accounts',
+    'odoo',
 ]
 
 MIDDLEWARE = [
