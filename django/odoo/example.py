@@ -23,10 +23,9 @@ result = odoo.searchPartnerByBirthdate("1995-03-07")
 data = result[0]
 output = tuple(data.items())
 print(output)
+print(output[1][1])
 
-print(type(data))
-print(type(output))
-
+print(type(result))
 
 print(odoo.searchPartnerByName("Test1"))
 #odoo.createEvent("event_test5", "2020-12-28 20:18:18",

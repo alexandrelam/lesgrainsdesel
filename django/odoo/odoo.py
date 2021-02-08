@@ -53,17 +53,10 @@ class Odoo:
             print("uid: ", self.uid)
             sys.exit()
 
-    def searchRead(self, dbTable: str, filters: [str], fields: [str]):
-        if self.models:
-            return self.models.execute_kw(self.db, self.uid, self.password, dbTable,
-                                            'search_read', [filters], {'fields': fields})
-
 
     def searchPartnerByBirthdate(self, birthdate):
-        data = self.models.execute_kw(self.db, self.uid, self.password, 'res.partner',
+        return self.models.execute_kw(self.db, self.uid, self.password, 'res.partner',
                 'search_read',[[['birthdate', '=', birthdate]]], {'fields': ['name', 'id']})
-        #output = json.loads(data)
-        return data 
 
 
     def searchPartnerByName(self, name):

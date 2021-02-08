@@ -30,6 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
+AUTHENTICATION_BACKENDS = ['accounts.models.OdooBackend']
 # Application definition
 
 INSTALLED_APPS = [
