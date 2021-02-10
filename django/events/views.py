@@ -9,7 +9,8 @@ from .utils import formatTime
 @login_required(login_url='/login/')
 def home(request, id):
     if Event.objects.count():
-        sorted_events_list = Event.objects.order_by('date_begin')
+        sorted_events_list = Event.objects.filter(
+            status="VAL").order_by('date_begin')
         context = {'eventsList': sorted_events_list}
         context["selected"] = Event.objects.get(id=id)
         context["participation"] = Participation.objects.filter(event__id=id)
