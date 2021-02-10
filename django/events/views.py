@@ -274,24 +274,21 @@ def noEventsAdmin(request):
 
 
 @login_required(login_url='/login/')
-def admin_en_cours_event(request, id):
+def admin_next_status(request, id):
     current_event = Event.objects.get(pk=id)
-    current_event.status = "ECV"
+    if current_event.status == "ECV":
+        current_event.status = "VAL"
+    elif current_event.status == "VAL":
+        current_event.status = "TER"
     current_event.save()
     return redirect("/admin_redirect/")
 
-
 @login_required(login_url='/login/')
-def admin_validate_event(request, id):
+def admin_previous_status(request, id):
     current_event = Event.objects.get(pk=id)
-    current_event.status = "VAL"
-    current_event.save()
-    return redirect("/admin_redirect/")
-
-
-@login_required(login_url='/login/')
-def admin_end_event(request, id):
-    current_event = Event.objects.get(pk=id)
-    current_event.status = "TER"
+    if current_event.status == "VAL":
+        current_event.status = "ECV"
+    elif current_event.status == "TER":
+        current_event.status = "VAL"
     current_event.save()
     return redirect("/admin_redirect/")

@@ -22,9 +22,9 @@
                     <p>{{ selected.long_description }}</p>
                 </div>
                 <div class="call-to-action">
-                    <a href="{% url 'validate_event' id=event_id %}"><button class="primary"><i
+                    <a href="{% url 'admin_next_status' id=event_id %}"><button class="primary"><i
                                 class="fas fa-check"></i></button></a>
-                    <a href="{% url 'set_en_cours_event' id=event_id %}"><button class="danger"><i
+                    <a href="{% url 'admin_previous_status' id=event_id %}"><button class="danger"><i
                                 class="fas fa-times"></i></button></a>
                     <div class="sub-text">
                         <p><strong>{{selected.date_begin|date:"d M Y"}}</strong></p>

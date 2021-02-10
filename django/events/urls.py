@@ -23,7 +23,6 @@ urlpatterns = [
     path('admin_details/', views.noEventsAdmin),
     path('admin_redirect/', views.admin_redirect, name="admin_page"),
     path('admin_details/<id>', views.admin_details, name="admin_page"),
-    path('admin_validate_event/<id>', views.admin_validate_event, name="validate_event"),
-    path('set_en_cours_event/<id>', views.admin_en_cours_event, name="set_en_cours_event"),
-    path('set_end_event/<id>', views.admin_end_event, name="set_end_event"),
+    path('admin_next_status/<id>', views.admin_next_status, name="admin_next_status"),
+    path('admin_previous_status/<id>', views.admin_previous_status, name="admin_previous_status"),
 ]
