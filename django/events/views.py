@@ -232,9 +232,9 @@ def desinscription_participation(request, id):
 def admin_redirect(request):
     if(Event.objects.all()):
         first_event_id = Event.objects.order_by('date_begin').first().id
-        response = redirect("admin_details/" + str(first_event_id))
+        response = redirect("/admin_details/" + str(first_event_id))
     else:
-        response = redirect("admin_details/")
+        response = redirect("/admin_details/")
     return response
 
 
@@ -264,3 +264,34 @@ def noEventsAdmin(request):
     context = {}
     context["page"] = "admin"
     return render(request, 'events/events_list.html', context)
+
+
+@login_required(login_url='/login/')
+def noEventsAdmin(request):
+    context = {}
+    context["page"] = "admin"
+    return render(request, 'events/events_list.html', context)
+
+
+@login_required(login_url='/login/')
+def admin_en_cours_event(request, id):
+    current_event = Event.objects.get(pk=id)
+    current_event.status = "ECV"
+    current_event.save()
+    return redirect("/admin_redirect/")
+
+
+@login_required(login_url='/login/')
+def admin_validate_event(request, id):
+    current_event = Event.objects.get(pk=id)
+    current_event.status = "VAL"
+    current_event.save()
+    return redirect("/admin_redirect/")
+
+
+@login_required(login_url='/login/')
+def admin_end_event(request, id):
+    current_event = Event.objects.get(pk=id)
+    current_event.status = "TER"
+    current_event.save()
+    return redirect("/admin_redirect/")
