@@ -1,5 +1,8 @@
 {% extends 'events/events_list.html' %} {% block details %}
-<section class="details">
+<!--Utiliser la version de production apres-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<section class="details" id="admin_page_app">
     <div>
         <div class="header">
             <div class="profile-picture" style="background-image : url('{{ adherent.picture.url }}')"></div>
@@ -22,18 +25,20 @@
                     <p>{{ selected.long_description }}</p>
                 </div>
                 <div class="call-to-action">
+                    {% if selected.status == "TER" %}
                     <div class="give-points">
                         <p>Attribution des points</p>
                         <div class="pts-buttons-wrapper">
-                            <div class="pts-buttons">
-                                <i class="far fa-plus-square"></i>
-                            </div>
-                            <p>4</p>
-                            <div class="pts-buttons">
+                            <div class="pts-buttons" @click="points--">
                                 <i class="far fa-minus-square"></i>
+                            </div>
+                            <p>[[points]]</p>
+                            <div class="pts-buttons" @click="points++">
+                                <i class="far fa-plus-square"></i>
                             </div>
                         </div>
                     </div>
+                    {% endif %}
                     <div class="buttons">
                         <a href="{% url 'admin_next_status' id=event_id %}"><button class="primary"><i
                                     class="fas fa-check"></i></button></a>
@@ -56,4 +61,13 @@
         </div>
     </div>
 </section>
+<script>
+    var admin_page_app = new Vue({
+        el: '#admin_page_app',
+        delimiters: ['[[', ']]'],
+        data: {
+            points: 0,
+        },
+    });
+</script>
 {% endblock details %}
