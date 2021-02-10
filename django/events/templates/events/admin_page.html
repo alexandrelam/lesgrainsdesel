@@ -26,6 +26,8 @@
                                 class="fas fa-check"></i></button></a>
                     <a href="{% url 'admin_previous_status' id=event_id %}"><button class="danger"><i
                                 class="fas fa-times"></i></button></a>
+                    <a href="{% url 'admin_previous_status' id=event_id %}"><button class="neutral"><i
+                                class="fas fa-edit"></i></button></a>
                     <div class="sub-text">
                         <p><strong>{{selected.date_begin|date:"d M Y"}}</strong></p>
                         <p>

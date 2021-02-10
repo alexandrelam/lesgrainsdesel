@@ -5,6 +5,7 @@ html {
   font-weight: 500;
 
   --unselected: #a2a9c8;
+  --unselected-shadow: 0px 4px 8px 1px rgba(202, 202, 202, 0.35);
   --highlight: #5fcf8c;
   --hover-highlight: #4eb276;
   --danger: #ff4d4f;
@@ -402,15 +403,19 @@ a {
 }
 
 .details .call-to-action .primary {
+  background-color: var(--highlight);
+  color: white;
+  box-shadow: var(--greenShadow);
+}
+
+.details .call-to-action button{
   padding: 17px 30px;
   border: none;
-  background-color: var(--highlight);
   font-family: "Inter";
   font-weight: 700;
   color: white;
   font-size: 0.875rem;
   border-radius: 8px;
-  box-shadow: var(--greenShadow);
 }
 
 .details .call-to-action .primary:hover {
@@ -419,20 +424,26 @@ a {
 }
 
 .details .call-to-action .danger {
-  padding: 17px 30px;
-  border: none;
   background-color: var(--danger);
-  font-family: "Inter";
-  font-weight: 700;
   color: white;
-  font-size: 0.875rem;
-  border-radius: 8px;
   box-shadow: var(--dangerShadow);
 }
 
 .details .call-to-action .danger:hover {
   background-color: var(--hover-danger);
   cursor: pointer;
+}
+
+
+.details .call-to-action .neutral{
+  background-color: var(--unselected);
+  color: white;
+  box-shadow: var(--unselected-shadow);
+}
+
+.details .call-to-action .neutral:hover {
+  cursor: pointer;
+  backdrop-filter: brightness(0.85);
 }
 
 .details .call-to-action .sub-text p {
