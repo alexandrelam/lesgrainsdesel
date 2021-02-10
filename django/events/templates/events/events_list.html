@@ -33,6 +33,25 @@
             <h2>{{event.title}}</h2>
             {% endif %}
             <p>{{event.long_description}}</p>
+            {% if displayStatus %}
+            <div class="tag-wrapper">
+              {% if event.status == "ECV" %}
+              <div class="tag orange">
+                <p>En cours de validation</p>
+              </div>
+              {%elif event.status == "VAL"%}
+              <div class="tag green">
+                <p>Validé !</p>
+              </div>
+              {% else %}
+              <div class="tag blue">
+                <p>Terminé !</p>
+              </div>
+              {% endif %}
+            </div>
+            {% endif %}
+
+
           </div>
         </li>
       </a>

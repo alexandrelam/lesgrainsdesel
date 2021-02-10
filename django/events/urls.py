@@ -20,5 +20,9 @@ urlpatterns = [
     path('participations/', views.noParticipations),
     path('participations_redirect',
          views.participations_redirect, name="participations"),
-    path('admin_page/', views.admin_page, name="admin_page"),
+    path('admin_details/', views.noEventsAdmin),
+    path('admin_redirect/', views.admin_redirect, name="admin_page"),
+    path('admin_details/<id>', views.admin_details, name="admin_page"),
+    path('admin_next_status/<id>', views.admin_next_status, name="admin_next_status"),
+    path('admin_previous_status/<id>', views.admin_previous_status, name="admin_previous_status"),
 ]
