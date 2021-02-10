@@ -395,11 +395,47 @@ a {
 }
 
 .details .call-to-action {
+    margin-top: 50px;
+}
+
+.details .call-to-action .give-points{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.details .call-to-action .give-points p{
+    margin: 0px 18px 0px 18px;
+}
+
+.details .call-to-action .pts-buttons-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 40px
+}
+
+
+.details .call-to-action .pts-buttons{
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #D9D9D9;
+    box-sizing: border-box;
+    border-radius: 8px;
+    color: #FEC703;
+
+}
+
+.details .call-to-action .buttons {
   display: flex;
   gap: 22px;
   justify-content: center;
   align-items: center;
-  margin-top: 80px;
 }
 
 .details .call-to-action .primary {

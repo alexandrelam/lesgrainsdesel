@@ -22,18 +22,34 @@
                     <p>{{ selected.long_description }}</p>
                 </div>
                 <div class="call-to-action">
-                    <a href="{% url 'admin_next_status' id=event_id %}"><button class="primary"><i
-                                class="fas fa-check"></i></button></a>
-                    <a href="{% url 'admin_previous_status' id=event_id %}"><button class="danger"><i
-                                class="fas fa-times"></i></button></a>
-                    <a href="{% url 'admin_previous_status' id=event_id %}"><button class="neutral"><i
-                                class="fas fa-edit"></i></button></a>
-                    <div class="sub-text">
-                        <p><strong>{{selected.date_begin|date:"d M Y"}}</strong></p>
-                        <p>
-                            {{selected.date_begin|date:"D"}} à
-                            {{selected.date_begin|date:"H:i"}}
-                        </p>
+                    <div class="give-points">
+                        <p>Attribution des points</p>
+                        <div class="pts-buttons-wrapper">
+                            <div class="pts-buttons">
+                                <i class="far fa-plus-square"></i>
+                            </div>
+                            <p>4</p>
+                            <div class="pts-buttons">
+                                <i class="far fa-minus-square"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <a href="{% url 'admin_next_status' id=event_id %}"><button class="primary"><i
+                                    class="fas fa-check"></i></button></a>
+                        <a href="{% url 'admin_previous_status' id=event_id %}"><button class="danger"><i
+                                    class="fas fa-times"></i></button></a>
+                        {% if selected.status == "ECV" %}
+                        <a href="{% url 'create_modify_event' id=event_id %}"><button class="neutral"><i
+                                    class="fas fa-edit"></i></button></a>
+                        {% endif %}
+                        <div class="sub-text">
+                            <p><strong>{{selected.date_begin|date:"d M Y"}}</strong></p>
+                            <p>
+                                {{selected.date_begin|date:"D"}} à
+                                {{selected.date_begin|date:"H:i"}}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
