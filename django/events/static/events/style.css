@@ -13,6 +13,18 @@ html {
   --greyBackground: #f7f7f7;
   --greenShadow: 0px 4px 8px 1px rgba(95, 207, 140, 0.35);
   --menuShadow: 0px 0px 33px rgba(0, 0, 0, 0.15);
+
+  --tag-orange-color: #d46b08;
+  --tag-orange-border: #ffd591;
+  --tag-orange-background: #fff2e8;
+
+  --tag-green-color: #389e0d;
+  --tag-green-border: #b7eb8f;
+  --tag-green-background: #f6ffed;
+
+  --tag-blue-color: #1d39c4;
+  --tag-blue-border: #adc6ff;
+  --tag-blue-background: #f0f5ff;
 }
 
 *,
@@ -251,6 +263,49 @@ a {
   font-size: 0.8125rem;
   font-weight: 400;
   color: var(--unselected);
+}
+
+.events-list .scroll-list-wrapper .tag-wrapper {
+  display: flex;
+  margin-top: 5px;
+}
+
+.events-list .scroll-list-wrapper .tag {
+  box-sizing: content-box;
+  height: 20px;
+  padding: 3px 7px 0 7px;
+}
+
+.events-list .scroll-list-wrapper .tag p {
+  font-size: 12px;
+  vertical-align: center;
+}
+
+.events-list .scroll-list-wrapper .tag.orange {
+  border: 1px solid var(--tag-orange-border);
+  background-color: var(--tag-orange-background);
+}
+
+.events-list .scroll-list-wrapper .tag.orange p {
+  color: var(--tag-orange-color);
+}
+
+.events-list .scroll-list-wrapper .tag.blue {
+  border: 1px solid var(--tag-blue-border);
+  background-color: var(--tag-blue-background);
+}
+
+.events-list .scroll-list-wrapper .tag.blue p {
+  color: var(--tag-blue-color);
+}
+
+.events-list .scroll-list-wrapper .tag.green {
+  border: 1px solid var(--tag-green-border);
+  background-color: var(--tag-green-background);
+}
+
+.events-list .scroll-list-wrapper .tag.green p {
+  color: var(--tag-green-color);
 }
 
 /*************************************/

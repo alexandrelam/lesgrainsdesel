@@ -31,6 +31,7 @@ def home(request, id):
 @login_required(login_url='/login/')
 def create_events(request):
     context = {}
+    context["displayStatus"] = True
     current_user = request.user
     context["current_user"] = current_user
     context["adherent"] = Adherent.objects.all().filter(
@@ -75,6 +76,7 @@ def create_events(request):
 @login_required(login_url='/login/')
 def create_events_details(request, id):
     context = {}
+    context["displayStatus"] = True
     current_user = request.user
     context["current_user"] = current_user
     context["page"] = "create_events"
@@ -111,6 +113,7 @@ def create_modify_event(request, id):
     context["current_event_date_end"] = formatTime(
         Event.objects.get(pk=id).date_end)
     context["modify"] = True
+    context["displayStatus"] = True
     context["eventsList"] = Event.objects.filter(
         author_id=current_user.id).order_by("date_begin")
 
@@ -225,7 +228,38 @@ def desinscription_participation(request, id):
 
 
 @login_required(login_url='/login/')
-def admin_page(request):
+def admin_redirect(request):
+    if(Event.objects.all()):
+        first_event_id = Event.objects.order_by('date_begin').first().id
+        response = redirect("admin_details/" + str(first_event_id))
+    else:
+        response = redirect("admin_details/")
+    return response
+
+
+@login_required(login_url='/login/')
+def admin_details(request, id):
+    context = {}
+    if Event.objects.count():
+        sorted_events_list = Event.objects.order_by('date_begin')
+        context = {'eventsList': sorted_events_list}
+        context["selected"] = Event.objects.get(id=id)
+        context["participation"] = Participation.objects.filter(event__id=id)
+    context["page"] = "admin"
+    current_user = request.user
+    context["current_user"] = current_user
+    context["adherent"] = Adherent.objects.all().filter(
+        user__id=current_user.id)[0]
+    context["event_id"] = id
+    context["participe"] = False
+    context["displayStatus"] = True
+    if Participation.objects.filter(Adherent__user__id=current_user.id, event__id=id):
+        context["participe"] = True
+    return render(request, 'events/admin_page.html', context)
+
+
+@login_required(login_url='/login/')
+def noEventsAdmin(request):
     context = {}
     context["page"] = "admin"
-    return render(request, 'events/admin_page.html', context)
+    return render(request, 'events/events_list.html', context)
