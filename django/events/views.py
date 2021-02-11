@@ -197,7 +197,7 @@ def noParticipations(request):
 @login_required(login_url='/login/')
 def redirect_view(request):
     if(Event.objects.all()):
-        first_event_id = Event.objects.order_by('date_begin').first().id
+        first_event_id = Event.objects.filter(status="VAL").order_by('date_begin').first().id
         response = redirect("events/" + str(first_event_id))
     else:
         response = redirect("events/")
