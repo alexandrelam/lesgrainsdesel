@@ -30,7 +30,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
-AUTHENTICATION_BACKENDS = ['accounts.models.OdooBackend']
+AUTH_USER_MODEL = 'accounts.User'
+AUTHENTIFICATION_BACKENDS = ['accounts.models.OdooBackend']
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,8 +45,9 @@ INSTALLED_APPS = [
     'fontawesome-free',
     'events',
     'login',
-    'accounts',
     'odoo',
+    'accounts',
+    'odooAuth'
 ]
 
 MIDDLEWARE = [

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth import login, logout
-from accounts import models as accounts_models
+from odooAuth import models as auth
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import redirect
@@ -12,16 +12,20 @@ def login_view(request):
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
-        OdooBackend = accounts_models.OdooBackend()
+        OdooBackend = auth.OdooBackend()
         user = OdooBackend.authenticate(request, email, password, False)
-        print("user id is "+ user.getUserId)
         if user is not None:
-            print("Logging in...")
+            print("[DEBUG] User id is "+ str(user.getUserId()))
+            print("[DEBUG] Logging in...")
             login(request, user)
             return redirect(events_views.redirect_view)
     return render(request, 'login/login.html')
 
 
 def logout_view(request):
+    current_user = request.user
+    print("[DEBUG] Logging out and deleting user : "+str(current_user.getFullName())+
+            " ID : "+str(current_user.getUserId()))
     logout(request)
+    current_user.delete()
     return redirect(login_view)
