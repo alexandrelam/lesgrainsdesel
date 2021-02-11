@@ -1,5 +1,73 @@
 {% extends 'events/events_list.html' %} {% block details %}
-<section class="admin_page">
-    <h1>Créez la page admin ici</h1>
+<!--Utiliser la version de production apres-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<section class="details" id="admin_page_app">
+    <div>
+        <div class="header">
+            <div class="profile-picture" style="background-image : url('{{ adherent.picture.url }}')"></div>
+            <div>
+                <h2>{{current_user.first_name}} {{current_user.last_name}}</h2>
+                <p>adhérent</p>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content-wrapper">
+                <div class="img" style="background-image: url('{{selected.image.url}}')"></div>
+                <div class="small">
+                    <div class="icon">
+                        <i class="far fa-user-circle"></i>
+                    </div>
+                    <p>{{participation.count}} personnes participent</p>
+                </div>
+                <div class="text">
+                    <h1>{{ selected.title }}</h1>
+                    <p>{{ selected.long_description }}</p>
+                </div>
+                <div class="call-to-action">
+                    {% if selected.status == "TER" %}
+                    <div class="give-points">
+                        <p>Attribution des points</p>
+                        <div class="pts-buttons-wrapper">
+                            <div class="pts-buttons" @click="points--">
+                                <i class="far fa-minus-square"></i>
+                            </div>
+                            <p>[[points]]</p>
+                            <div class="pts-buttons" @click="points++">
+                                <i class="far fa-plus-square"></i>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="buttons">
+                        <a href="{% url 'admin_next_status' id=event_id %}"><button class="primary"><i
+                                    class="fas fa-check"></i></button></a>
+                        <a href="{% url 'admin_previous_status' id=event_id %}"><button class="danger"><i
+                                    class="fas fa-times"></i></button></a>
+                        {% if selected.status == "ECV" %}
+                        <a href="{% url 'create_modify_event' id=event_id %}"><button class="neutral"><i
+                                    class="fas fa-edit"></i></button></a>
+                        {% endif %}
+                        <div class="sub-text">
+                            <p><strong>{{selected.date_begin|date:"d M Y"}}</strong></p>
+                            <p>
+                                {{selected.date_begin|date:"D"}} à
+                                {{selected.date_begin|date:"H:i"}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
+<script>
+    var admin_page_app = new Vue({
+        el: '#admin_page_app',
+        delimiters: ['[[', ']]'],
+        data: {
+            points: 0,
+        },
+    });
+</script>
 {% endblock details %}
