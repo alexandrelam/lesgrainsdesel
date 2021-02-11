@@ -14,7 +14,9 @@ def login_view(request):
         password = request.POST['password']
         OdooBackend = accounts_models.OdooBackend()
         user = OdooBackend.authenticate(request, email, password, False)
-        if user is not None and user.is_active:
+        print("user id is "+ user.getUserId)
+        if user is not None:
+            print("Logging in...")
             login(request, user)
             return redirect(events_views.redirect_view)
     return render(request, 'login/login.html')

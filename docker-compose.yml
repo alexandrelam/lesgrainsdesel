@@ -29,6 +29,7 @@ services:
 
   app:
     image: "registry.gitlab.com/lgds/foodcoops:9.0-cooperatic-2"
+    container_name: odoo
     env_file: .env
     restart: always
     ports:

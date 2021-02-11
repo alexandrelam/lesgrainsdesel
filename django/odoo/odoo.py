@@ -5,7 +5,7 @@ import json
 
 class Odoo:
     def __init__(self):
-        self.url = 'http://lesgrainsdesel_app_1:8069'
+        self.url = 'http://odoo:8069'
         self.db = 'foodcoops'
         self.username = 'admin'
         self.password = 'admin'
@@ -56,7 +56,7 @@ class Odoo:
 
     def searchPartnerByBirthdate(self, birthdate):
         return self.models.execute_kw(self.db, self.uid, self.password, 'res.partner',
-                'search_read',[[['birthdate', '=', birthdate]]], {'fields': ['name', 'id']})
+                'search_read',[[['birthdate', '=', birthdate]]], {'fields': ['id', 'email','name']})
 
 
     def searchPartnerByName(self, name):

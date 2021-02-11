@@ -19,14 +19,17 @@ odoo.connect()
 #                    ["name", "id", "birthdate"]))
 
 
-result = odoo.searchPartnerByBirthdate("1995-03-07")
+result = odoo.searchPartnerByBirthdate("1998-06-10")
 data = result[0]
 output = tuple(data.items())
 print(output)
-print(output[1][1])
+print(output[2][1]) #to get the email
+print(output[0][1]) #to get the user id 
+print(output[1][1]) #to get the name
 
-print(type(result))
 
-print(odoo.searchPartnerByName("Test1"))
 #odoo.createEvent("event_test5", "2020-12-28 20:18:18",
 #                 "2020-12-29 20:18:18", 6)
+
+
+

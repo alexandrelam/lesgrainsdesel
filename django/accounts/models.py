@@ -7,11 +7,12 @@ odoo = odoo.Odoo()
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, userId, isStaff=False, isAdmin=False):
+    def create_user(self, email, userId, fullName, isStaff=False, isAdmin=False):
         if not email:
             raise ValueError("Users must have an email address")
         user = self.model(email=self.normalize_email(email))
         user.userId = userId
+        user.fullName = fullName
         user.isStaff = isStaff
         user.isAdmin = isAdmin
         return user
@@ -47,16 +48,6 @@ class User(AbstractBaseUser):
 
 class OdooBackend (BaseBackend):
 
-    def authenticatePartner(self, request, username=None, password=None):
-        odoo.connect()
-        user = None
-        encodedData = odoo.searchPartnerByBirthdate(password)
-        for i in encodedData:
-            if username == tuple(i)[1][1]:
-                user = UserManager.create_user(
-                    username, tuple(i)[0][1], False, False)
-
-        return user
 
     def authenticate(self, request, username=None, password=None, isOdooUser=False):
         if isOdooUser:
@@ -65,6 +56,17 @@ class OdooBackend (BaseBackend):
         else:
             user = self.authenticatePartner(request, username, password)
             return user
+
+    def authenticatePartner(self, request, username=None, password=None):
+        odoo.connect()
+        user = None
+        encodedData = odoo.searchPartnerByBirthdate(password)
+        for i in encodedData:
+            print("input email :"+username+" email gathered from db : "+tuple(i)[2][1])
+            if username.tuple(i)[2][1]:
+                user = UserManager.create_user(
+                    username, tuple(i)[0][1], tuple(i)[1][1], False, False)
+        return user
 
     def authenticateOdooUser(self, request, usename=None, password=None):
         return None
