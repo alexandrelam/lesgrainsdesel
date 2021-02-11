@@ -283,6 +283,7 @@ def admin_next_status(request, id):
     current_event.save()
     return redirect("/admin_redirect/")
 
+
 @login_required(login_url='/login/')
 def admin_previous_status(request, id):
     current_event = Event.objects.get(pk=id)
