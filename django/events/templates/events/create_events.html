@@ -7,8 +7,12 @@
         <div class="header">
             <div class="profile-picture" style="background-image : url('{{ adherent.picture.url }}')"></div>
             <div>
-                <h2>{{current_user.first_name}} {{current_user.last_name}}</h2>
+                <h2>{{current_user.fullName}}</h2>
+                {% if current_user.admin %}
                 <p>Admin</p>
+                {% else %}
+                <p>Adhérent</p>
+                {% endif %}
             </div>
         </div>
         <div class="content">
