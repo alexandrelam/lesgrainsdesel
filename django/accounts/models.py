@@ -2,14 +2,13 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
-
 class UserManager(BaseUserManager):
     def create_user(self, email, userId, fullName, isStaff=False, isAdmin=False):
         if not email:
             raise ValueError("Users must have an email address")
         print("[DEBUG]Creating user with email : " + email)
         user = self.model(email=self.normalize_email(email))
-        print("[DEBUG] User id = "+ str(userId))
+        print("[DEBUG] User id = " + str(userId))
         user.userId = userId
         user.fullName = fullName
         user.isStaff = isStaff
@@ -44,5 +43,3 @@ class User(AbstractBaseUser):
 
     def isAdmin(self):
         return self.admin
-
-

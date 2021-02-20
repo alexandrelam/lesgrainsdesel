@@ -1,8 +1,11 @@
 from django.db import models
+from django.db.models.deletion import CASCADE
 from accounts.models import User
 from django.conf import settings
 from model_utils import Choices
 from django.utils.translation import ugettext_lazy as _
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 # Create your models here.
@@ -34,15 +37,24 @@ class Participation(models.Model):
     Adherent = models.ForeignKey("Adherent", on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.event.title + "  |  " + self.Adherent.user.username
+        return self.event.title + "  |  " + str(self.Adherent.userId)
 
 
 class Adherent(models.Model):
-    user = models.OneToOneField(
-        User, on_delete=models.CASCADE, primary_key=True)
-    isAdmin = models.BooleanField(default=False)
+    userId = models.IntegerField(default=1)
     picture = models.ImageField(
         upload_to="images/users/", default="images/default_icon.png")
 
     def __str__(self):
-        return self.user.username
+        return str(self.userId)
+
+
+@receiver(post_save, sender=User, dispatch_uid="login_user")
+def create_adherent(sender, instance, **kwargs):
+    if len(Adherent.objects.filter(userId=instance.userId)) == 0:
+        adherent = Adherent()
+        adherent.userId = instance.userId
+        post_save.disconnect(create_adherent, sender=User)
+        adherent.save()
+        post_save.connect(create_adherent, sender=User)
+        print("adherent created")

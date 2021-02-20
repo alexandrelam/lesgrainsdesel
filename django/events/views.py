@@ -20,11 +20,11 @@ def home(request, id):
     current_user = request.user
     context["current_user"] = current_user
     context["adherent"] = Adherent.objects.all().filter(
-        user__id=current_user.id)[0]
+        userId=current_user.userId)[0]
     context["page"] = "home"
     context["event_id"] = id
     context["participe"] = False
-    if Participation.objects.filter(Adherent__user__id=current_user.id, event__id=id):
+    if Participation.objects.filter(Adherent__userId=current_user.userId, event__id=id):
         context["participe"] = True
     return render(request, 'events/details.html', context)
 
@@ -35,12 +35,14 @@ def create_events(request):
     context["displayStatus"] = True
     current_user = request.user
     context["current_user"] = current_user
+    print("before prints")
+    print(Adherent.objects.all().filter(userId=current_user.userId))
     context["adherent"] = Adherent.objects.all().filter(
-        user__id=current_user.id)[0]
+        userId=current_user.userId)[0]
     context["page"] = "create_events"
 
     context["eventsList"] = Event.objects.filter(
-        author_id=current_user.id).order_by("date_begin")
+        author_id=current_user.userId).order_by("date_begin")
 
     if request.method == 'POST':
         titre = request.POST["titre"]
@@ -49,7 +51,7 @@ def create_events(request):
         time_end = request.POST["time-end"]
         img_icon = None
         img_couverture = None
-        author_id = request.user.id
+        author_id = request.user.userId
         if len(request.FILES):
             img_icon = request.FILES["img-icon"]
             img_couverture = request.FILES["img-couverture"]
@@ -82,9 +84,9 @@ def create_events_details(request, id):
     context["current_user"] = current_user
     context["page"] = "create_events"
     context["eventsList"] = Event.objects.filter(
-        author_id=current_user.id).order_by("date_begin")
+        author_id=current_user.userId).order_by("date_begin")
     context["adherent"] = Adherent.objects.all().filter(
-        user__id=current_user.id)[0]
+        userId=current_user.userId)[0]
     context["event_id"] = id
     context["participation"] = Participation.objects.filter(event__id=id)
 
@@ -97,7 +99,7 @@ def create_events_details(request, id):
 @login_required(login_url='/login/')
 def delete_events(request, id):
     current_obj = Event.objects.get(pk=id)
-    if request.user.id == current_obj.author_id:
+    if request.user.userId == current_obj.author_id:
         current_obj.delete()
     return redirect("/create/")
 
@@ -116,7 +118,7 @@ def create_modify_event(request, id):
     context["modify"] = True
     context["displayStatus"] = True
     context["eventsList"] = Event.objects.filter(
-        author_id=current_user.id).order_by("date_begin")
+        author_id=current_user.userId).order_by("date_begin")
 
     if request.method == 'POST':
         titre = request.POST["titre"]
@@ -125,7 +127,7 @@ def create_modify_event(request, id):
         time_end = request.POST["time-end"]
         img_icon = None
         img_couverture = None
-        author_id = request.user.id
+        author_id = request.user.userId
         if len(request.FILES):
             img_icon = request.FILES["img-icon"]
             img_couverture = request.FILES["img-couverture"]
@@ -148,7 +150,7 @@ def create_modify_event(request, id):
             event.save()
             return redirect("/create/")
 
-    if request.user.id == Event.objects.get(pk=id).author_id:
+    if request.user.userId == Event.objects.get(pk=id).author_id:
         return render(request, "events/create_events.html", context)
     else:
         return redirect("/create/")
@@ -158,7 +160,7 @@ def create_modify_event(request, id):
 def participations(request, id):
     if Event.objects.count():
         sorted_participations_list = Participation.objects.filter(
-            Adherent__user__id=request.user.id).order_by('event__date_begin')
+            Adherent__userId=request.user.userId).order_by('event__date_begin')
         print(sorted_participations_list)
         context = {'participationsList': sorted_participations_list}
         context["selected"] = Event.objects.get(id=id)
@@ -169,18 +171,18 @@ def participations(request, id):
     current_user = request.user
     context["current_user"] = current_user
     context["adherent"] = Adherent.objects.all().filter(
-        user__id=current_user.id)[0]
+        userId=current_user.userId)[0]
     context["page"] = "participations"
     context["event_id"] = id
     context["participe"] = False
-    if Participation.objects.filter(Adherent__user__id=current_user.id, event__id=id):
+    if Participation.objects.filter(Adherent__userId=current_user.userId, event__id=id):
         context["participe"] = True
     return render(request, 'events/participations_details.html', context)
 
 
 @login_required(login_url='/login/')
 def participations_redirect(request):
-    if(Participation.objects.filter(Adherent__user__id=request.user.id).order_by("event__date_begin")):
+    if(Participation.objects.filter(Adherent__userId=request.user.userId).order_by("event__date_begin")):
         first_event_id = Event.objects.order_by('date_begin').first().id
         response = redirect("/participations/" + str(first_event_id))
     else:
@@ -214,7 +216,7 @@ def noEvents(request):
 def inscription_participation(request, id):
     participation = Participation()
     participation.event = Event.objects.get(pk=id)
-    adherent_id = Adherent.objects.get(user__id=request.user.id).pk
+    adherent_id = Adherent.objects.get(userId=request.user.userId).pk
     participation.Adherent = Adherent.objects.get(pk=adherent_id)
     participation.save()
     return redirect('home')
@@ -223,7 +225,7 @@ def inscription_participation(request, id):
 @login_required(login_url='/login/')
 def desinscription_participation(request, id):
     participation = Participation.objects.get(
-        Adherent__user__id=request.user.id, event__id=id)
+        Adherent__userId=request.user.userId, event__id=id)
     participation.delete()
     return redirect('home')
 
@@ -250,11 +252,11 @@ def admin_details(request, id):
     current_user = request.user
     context["current_user"] = current_user
     context["adherent"] = Adherent.objects.all().filter(
-        user__id=current_user.id)[0]
+        userId=current_user.userId)[0]
     context["event_id"] = id
     context["participe"] = False
     context["displayStatus"] = True
-    if Participation.objects.filter(Adherent__user__id=current_user.id, event__id=id):
+    if Participation.objects.filter(Adherent__userId=current_user.userId, event__id=id):
         context["participe"] = True
     return render(request, 'events/admin_page.html', context)
 
@@ -282,6 +284,7 @@ def admin_next_status(request, id):
         current_event.status = "TER"
     current_event.save()
     return redirect("/admin_redirect/")
+
 
 @login_required(login_url='/login/')
 def admin_previous_status(request, id):
