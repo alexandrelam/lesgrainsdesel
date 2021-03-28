@@ -12,10 +12,13 @@ def login_view(request):
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
-        isAdmin = request.POST['isAdmin']
+        adminAuth = request.POST['isAdmin']
         odooBackend = auth.OdooBackend()
-        print(f"isAdmin: {isAdmin}")
-        user = odooBackend.authenticate(request, email, password, False)
+        if adminAuth == "true":
+            adminAuth = True
+        else :
+            adminAuth = False
+        user = odooBackend.authenticate(request, email, password, adminAuth)
         if user is not None:
             print("[DEBUG] User id is "+ str(user.getUserId()))
             print("[DEBUG] Logging in...")

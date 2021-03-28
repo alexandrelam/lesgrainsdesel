@@ -4,7 +4,7 @@ import json
 
 
 class Odoo:
-    def __init__(self):
+    def __init__(self, username, password):
         self.url = 'http://odoo:8069'
         self.db = 'foodcoops'
         self.username = 'admin'
@@ -46,12 +46,13 @@ class Odoo:
             print("common endpoint: ", self.common)
             print("models: ", self.models)
             print("uid: ", self.uid)
+            return 1 
         except Exception as e:
             print(e)
             print("common endpoint: ", self.common)
             print("models: ", self.models)
             print("uid: ", self.uid)
-            sys.exit()
+            return 0
 
 
     def searchPartnerByBirthdate(self, birthdate):
@@ -61,7 +62,7 @@ class Odoo:
 
     def searchPartnerByName(self, name):
         return self.models.execute_kw(self.db, self.uid, self.password, 'res.partner',
-                'search_read',[[['name', '=', name]]], {'fields': ['birthdate', 'id']})
+                'search_read',[[['name', '=', name]]], {'fields': ['email', 'id']})
 
     '''
     odoo.createEvent("cree avec python", "2020-11-25 20:18:18",
@@ -81,6 +82,12 @@ class Odoo:
                                           'date_end': dateEnd,
                                           'organizer_id': organizerID
                                       }])
+
+
+
+
+    def getUid (self) :
+        return self.uid
 
     def version(self) -> str:
         if self.common:
