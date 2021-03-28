@@ -12,8 +12,8 @@ def login_view(request):
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
-        OdooBackend = auth.OdooBackend()
-        user = OdooBackend.authenticate(request, email, password, False)
+        odooBackend = auth.OdooBackend()
+        user = odooBackend.authenticate(request, email, password, False)
         if user is not None:
             print("[DEBUG] User id is "+ str(user.getUserId()))
             print("[DEBUG] Logging in...")
