@@ -41,6 +41,13 @@
               <label for="password">Date de naissance</label>
               <input id="text-input" type="text" name="password" placeholder="30/12/2000">
             </div>
+            <!-- 
+              Pour faire passer la variable isAdmin de vue vers Django on utilise 
+              un form que l'on ne display pas. Ce n'est pas la méthode la plus propre
+              mais ça marche.
+            -->
+            <input type="boolean" name="isAdmin" :value="isAdmin" style="display:None">
+
             <a href="#" v-if="isAdmin" @click="isAdmin=false">Je ne suis pas admin</a>
             <a href="#" v-else @click="isAdmin=true">Je suis admin</a>
             <input type="submit" value="Se connecter">
