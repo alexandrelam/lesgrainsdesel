@@ -33,10 +33,10 @@ class OdooBackend (BaseBackend):
         user = None
         odoo = Odoo(username, password)
         success = odoo.connect()
-        if success == 1 :
-            user = User.objects.create_user(
-                       "admin@admin.com", odoo.getUid(), username, True, True
-                    ) 
+        if success == 1 and not odoo.getOdooAdminUid() == -1 :
+                user = User.objects.create_user(
+                           username, odoo.getOdooPartnerUid(username), odoo.getOdooName(username), True, True
+                        ) 
         return user 
 
 

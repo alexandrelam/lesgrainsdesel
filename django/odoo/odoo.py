@@ -1,14 +1,12 @@
 import xmlrpc.client
-import sys
-import json 
 
 
 class Odoo:
     def __init__(self, username, password):
         self.url = 'http://odoo:8069'
         self.db = 'foodcoops'
-        self.username = 'admin'
-        self.password = 'admin'
+        self.username = username
+        self.password = password
 
         self.common = None
         self.models = None
@@ -64,6 +62,21 @@ class Odoo:
         return self.models.execute_kw(self.db, self.uid, self.password, 'res.partner',
                 'search_read',[[['name', '=', name]]], {'fields': ['email', 'id']})
 
+    def getOdooName(self, mail):
+        encodedData = self.models.execute_kw(self.db, self.uid, self.password, 'res.partner',
+                'search_read',[[['email', '=', mail]]], {'fields': ['name']})
+        sample = encodedData[0]
+        decodedData = tuple(sample.items())
+        return decodedData[1][1] 
+        
+            
+    def getOdooPartnerUid(self, mail):
+        encodedData = self.models.execute_kw(self.db, self.uid, self.password, 'res.partner',
+                'search_read',[[['email', '=', mail]]], {'fields': ['name']})
+        sample = encodedData[0]
+        decodedData = tuple(sample.items())
+        return decodedData[0][1] 
+
     '''
     odoo.createEvent("cree avec python", "2020-11-25 20:18:18",
                      "2020-11-26 20:18:18", 6)
@@ -83,11 +96,11 @@ class Odoo:
                                           'organizer_id': organizerID
                                       }])
 
-
-
-
-    def getUid (self) :
-        return self.uid
+    def getOdooAdminUid (self) :
+        if self.uid == False :
+            return -1
+        else :
+            return self.uid
 
     def version(self) -> str:
         if self.common:

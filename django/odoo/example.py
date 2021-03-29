@@ -1,7 +1,7 @@
 from odoo import Odoo
 import json
 
-odoo = Odoo()
+odoo = Odoo('test1@test.com', 'test1')
 
 odoo.connect()
 
@@ -19,15 +19,22 @@ odoo.connect()
 #                    ["name", "id", "birthdate"]))
 
 
-result = odoo.searchPartnerByBirthdate("1998-06-10")
-data = result[0]
-output = tuple(data.items())
-print(output)
-print(output[2][1]) #to get the email
-print(output[0][1]) #to get the user id 
-print(output[1][1]) #to get the name
+#result = odoo.searchPartnerByBirthdate("1998-06-10")
+#data = result[0]
+#output = tuple(data.items())
+#print(output)
+#print(output[2][1]) #to get the email
+#print(output[0][1]) #to get the user id 
+#print(output[1][1]) #to get the name
+
 
 
 #odoo.createEvent("event_test5", "2020-12-28 20:18:18",
 #                 "2020-12-29 20:18:18", 6)
 
+
+
+output = odoo.getOdooName('test1@test.com')
+outputID = odoo.getOdooPartnerUid('test1@test.com')
+print(output)
+print(outputID)
