@@ -41,6 +41,9 @@
               <label for="password">Date de naissance</label>
               <input id="text-input" type="text" name="password" placeholder="30/12/2000">
             </div>
+
+            <input type="hidden" name="isAdmin" :value="isAdmin">
+
             <a href="#" v-if="isAdmin" @click="isAdmin=false">Je ne suis pas admin</a>
             <a href="#" v-else @click="isAdmin=true">Je suis admin</a>
             <input type="submit" value="Se connecter">

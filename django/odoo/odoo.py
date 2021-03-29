@@ -1,14 +1,12 @@
 import xmlrpc.client
-import sys
-import json 
 
 
 class Odoo:
-    def __init__(self):
+    def __init__(self, username, password):
         self.url = 'http://odoo:8069'
         self.db = 'foodcoops'
-        self.username = 'admin'
-        self.password = 'admin'
+        self.username = username
+        self.password = password
 
         self.common = None
         self.models = None
@@ -46,12 +44,13 @@ class Odoo:
             print("common endpoint: ", self.common)
             print("models: ", self.models)
             print("uid: ", self.uid)
+            return 1 
         except Exception as e:
             print(e)
             print("common endpoint: ", self.common)
             print("models: ", self.models)
             print("uid: ", self.uid)
-            sys.exit()
+            return 0
 
 
     def searchPartnerByBirthdate(self, birthdate):
@@ -61,7 +60,22 @@ class Odoo:
 
     def searchPartnerByName(self, name):
         return self.models.execute_kw(self.db, self.uid, self.password, 'res.partner',
-                'search_read',[[['name', '=', name]]], {'fields': ['birthdate', 'id']})
+                'search_read',[[['name', '=', name]]], {'fields': ['email', 'id']})
+
+    def getOdooName(self, mail):
+        encodedData = self.models.execute_kw(self.db, self.uid, self.password, 'res.partner',
+                'search_read',[[['email', '=', mail]]], {'fields': ['name']})
+        sample = encodedData[0]
+        decodedData = tuple(sample.items())
+        return decodedData[1][1] 
+        
+            
+    def getOdooPartnerUid(self, mail):
+        encodedData = self.models.execute_kw(self.db, self.uid, self.password, 'res.partner',
+                'search_read',[[['email', '=', mail]]], {'fields': ['name']})
+        sample = encodedData[0]
+        decodedData = tuple(sample.items())
+        return decodedData[0][1] 
 
     '''
     odoo.createEvent("cree avec python", "2020-11-25 20:18:18",
@@ -81,6 +95,12 @@ class Odoo:
                                           'date_end': dateEnd,
                                           'organizer_id': organizerID
                                       }])
+
+    def getOdooAdminUid (self) :
+        if self.uid == False :
+            return -1
+        else :
+            return self.uid
 
     def version(self) -> str:
         if self.common:
