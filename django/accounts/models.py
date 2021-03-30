@@ -11,8 +11,8 @@ class UserManager(BaseUserManager):
         print("[DEBUG] User id = " + str(userId))
         user.userId = userId
         user.fullName = fullName
-        user.isStaff = isStaff
-        user.isAdmin = isAdmin
+        user.staff = isStaff
+        user.admin = isAdmin
         user.save(using=self._db)
         return user
 
