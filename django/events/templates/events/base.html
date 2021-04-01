@@ -45,6 +45,7 @@
             <p>Mes participations</p>
           </a>
         </li>
+        {% if current_user.isAdmin %}
         <li class="{% if page == 'admin' %} selected {% endif %}">
           <div class="icon">
             <i class="fas fa-toolbox"></i>
@@ -53,6 +54,7 @@
             <p>Admin</p>
           </a>
         </li>
+        {% endif %}
         <li>
           <div class="icon">
             <i class="fas fa-sign-out-alt"></i>

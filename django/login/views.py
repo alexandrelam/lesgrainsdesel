@@ -16,8 +16,9 @@ def login_view(request):
         odooBackend = auth.OdooBackend()
         if adminAuth == "true":
             adminAuth = True
-        else :
+        else:
             adminAuth = False
+
         user = odooBackend.authenticate(request, email, password, adminAuth)
         if user is not None:
             print("[DEBUG] User id is "+ str(user.getUserId()))

@@ -193,6 +193,7 @@ def participations_redirect(request):
 @login_required(login_url='/login/')
 def noParticipations(request):
     context = {"page": "participations"}
+    context["current_user"] = request.user
     return render(request, "events/events_list.html", context)
 
 
@@ -209,6 +210,7 @@ def redirect_view(request):
 @login_required(login_url='/login')
 def noEvents(request):
     context = {"page": "home"}
+    context["current_user"] = request.user
     return render(request, 'events/events_list.html', context)
 
 
@@ -265,13 +267,15 @@ def admin_details(request, id):
 def noEventsAdmin(request):
     context = {}
     context["page"] = "admin"
+    context["current_user"] = request.user
     return render(request, 'events/events_list.html', context)
 
 
 @login_required(login_url='/login/')
 def noEventsAdmin(request):
     context = {}
-    context["page"] = "admin"
+    context["page"] = "admin"        
+    context["current_user"] = request.user
     return render(request, 'events/events_list.html', context)
 
 
