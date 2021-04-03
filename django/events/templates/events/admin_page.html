@@ -29,20 +29,6 @@
                     <p>{{ selected.long_description }}</p>
                 </div>
                 <div class="call-to-action">
-                    {% if selected.status == "TER" %}
-                    <div class="give-points">
-                        <p>Attribution des points</p>
-                        <div class="pts-buttons-wrapper">
-                            <div class="pts-buttons" @click="points--">
-                                <i class="far fa-minus-square"></i>
-                            </div>
-                            <p>[[points]]</p>
-                            <div class="pts-buttons" @click="points++">
-                                <i class="far fa-plus-square"></i>
-                            </div>
-                        </div>
-                    </div>
-                    {% endif %}
                     <div class="buttons">
                         <a href="{% url 'admin_next_status' id=event_id %}"><button class="primary"><i
                                     class="fas fa-check"></i></button></a>
@@ -65,13 +51,4 @@
         </div>
     </div>
 </section>
-<script>
-    var admin_page_app = new Vue({
-        el: '#admin_page_app',
-        delimiters: ['[[', ']]'],
-        data: {
-            points: 0,
-        },
-    });
-</script>
 {% endblock details %}
