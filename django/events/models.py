@@ -6,10 +6,9 @@ from model_utils import Choices
 from django.utils.translation import ugettext_lazy as _
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
-
-# Create your models here.
-
+from io import BytesIO
+from PIL import Image
+from django.core.files import File
 
 class Event(models.Model):
     title = models.CharField(max_length=50)
@@ -28,8 +27,19 @@ class Event(models.Model):
     status = models.CharField(
         choices=STATUS, default=STATUS.ECV, max_length=20)
 
-    def __str__(self):
-        return self.title + " by " + str(self.author_id)
+    def compress(self, image):
+        im = Image.open(image)
+        im = im.convert('RGB')
+        im_io = BytesIO() 
+        im.save(im_io, 'JPEG', quality=60) 
+        new_image = File(im_io, name=image.name)
+        return new_image
+
+    def save(self, *args, **kwargs):
+                if not self.id:
+                    new_image = self.compress(self.image)
+                    self.image = new_image
+                super().save(*args, **kwargs)
 
 
 class Participation(models.Model):
