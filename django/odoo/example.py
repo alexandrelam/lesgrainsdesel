@@ -34,7 +34,10 @@ odoo.connect()
 
 
 
-output = odoo.getOdooName('test1@test.com')
-outputID = odoo.getOdooPartnerUid('test1@test.com')
-print(output)
-print(outputID)
+#output = odoo.getOdooName('test1@test.com')
+#outputID = odoo.getOdooPartnerUid('test1@test.com')
+#print(output)
+#print(outputID)
+
+
+print(odoo.formatDate("06/10/1996"))

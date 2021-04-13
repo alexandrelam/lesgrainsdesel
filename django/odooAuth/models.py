@@ -3,7 +3,6 @@ from django.contrib.auth.backends import BaseBackend
 from accounts.models import UserManager, User
 from odoo.odoo import Odoo
 
-
 class OdooBackend (BaseBackend):
 
     def authenticate(self, request, username=None, password=None, isOdooUser=False):
@@ -17,6 +16,8 @@ class OdooBackend (BaseBackend):
     def authenticatePartner(self, request, username=None, password=None):
         odoo = Odoo('admin', 'admin')
         odoo.connect()
+        password = odoo.formatDate(password)
+        print("date = "+password)
         user = None
         encodedData = odoo.searchPartnerByBirthdate(password)
         print(encodedData)

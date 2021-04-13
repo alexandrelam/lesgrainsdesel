@@ -1,4 +1,5 @@
 import xmlrpc.client
+from datetime import datetime
 
 
 class Odoo:
@@ -107,3 +108,7 @@ class Odoo:
             return self.common.version()
         else:
             return "You need to connect first.\nExecute .setCommonEndpoint()"
+
+    def formatDate (self, inputDate):
+        tmpDate = datetime.strptime(inputDate, '%d/%m/%Y')
+        return(tmpDate.strftime('%Y-%m-%d'))
