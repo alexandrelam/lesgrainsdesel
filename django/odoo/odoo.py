@@ -45,7 +45,7 @@ class Odoo:
             print("common endpoint: ", self.common)
             print("models: ", self.models)
             print("uid: ", self.uid)
-            return 1 
+            return 1
         except Exception as e:
             print(e)
             print("common endpoint: ", self.common)
@@ -53,30 +53,27 @@ class Odoo:
             print("uid: ", self.uid)
             return 0
 
-
     def searchPartnerByBirthdate(self, birthdate):
         return self.models.execute_kw(self.db, self.uid, self.password, 'res.partner',
-                'search_read',[[['birthdate', '=', birthdate]]], {'fields': ['id', 'email','name']})
-
+                                      'search_read', [[['birthdate', '=', birthdate]]], {'fields': ['id', 'email', 'name']})
 
     def searchPartnerByName(self, name):
         return self.models.execute_kw(self.db, self.uid, self.password, 'res.partner',
-                'search_read',[[['name', '=', name]]], {'fields': ['email', 'id']})
+                                      'search_read', [[['name', '=', name]]], {'fields': ['email', 'id']})
 
     def getOdooName(self, mail):
         encodedData = self.models.execute_kw(self.db, self.uid, self.password, 'res.partner',
-                'search_read',[[['email', '=', mail]]], {'fields': ['name']})
+                                             'search_read', [[['email', '=', mail]]], {'fields': ['name']})
         sample = encodedData[0]
         decodedData = tuple(sample.items())
-        return decodedData[1][1] 
-        
-            
+        return decodedData[1][1]
+
     def getOdooPartnerUid(self, mail):
         encodedData = self.models.execute_kw(self.db, self.uid, self.password, 'res.partner',
-                'search_read',[[['email', '=', mail]]], {'fields': ['name']})
+                                             'search_read', [[['email', '=', mail]]], {'fields': ['name']})
         sample = encodedData[0]
         decodedData = tuple(sample.items())
-        return decodedData[0][1] 
+        return decodedData[0][1]
 
     '''
     odoo.createEvent("cree avec python", "2020-11-25 20:18:18",
@@ -94,13 +91,44 @@ class Odoo:
                                           'name': name,
                                           'date_begin': dateBegin,
                                           'date_end': dateEnd,
+                                          'organizer_id': organizerID,
+                                      }])
+
+    def getLatestCreatedEventOdooId(self, name: str, dateBegin: str, dateEnd: str, organizerId: int):
+        encodedData = self.models.execute_kw(self.db, self.uid, self.password, 'event.event',
+                                             'search_read', [[['organizer_id', '=', organizerId], ['name', '=', name], ['date_begin', '=', dateBegin],
+                                              ['date_end', '=', dateEnd]]], {'fields': ['event_id']})
+        sample = encodedData[-1]
+        decodedData = tuple(sample.items())
+        return decodedData[0][1] 
+
+    def getEventOdooId(self, name: str, eventId: int):
+        encodedData = self.models.execute_kw(self.db, self.uid, self.password, 'event.event',
+                                             'search_read', [[['organizer_id', '=', eventId], ['name', '=', name]]], {'fields': ['event_id']})
+
+        sample = encodedData[0]
+        decodedData = tuple(sample.items())
+        return decodedData[0][1]
+
+    def modifyOdooEvent(self, name: str, dateBegin: str, dateEnd: str,
+                        organizerId: int, odooId):
+        return self.models.execute_kw(self.db, self.uid, self.password,
+                                      'event.event', 'write',
+                                      [[odooId], {
+                                          'name': name,
+                                          'date_begin': dateBegin,
+                                          'date_end': dateEnd,
                                           'organizer_id': organizerID
                                       }])
 
-    def getOdooAdminUid (self) :
-        if self.uid == False :
+    def deleteOdooEvent(self, odooId: int):
+        return self.models.execute_kw(self.db, self.uid, self.password,
+                                      'event.event', 'unlink', [[odooId]])
+
+    def getOdooAdminUid(self):
+        if self.uid == False:
             return -1
-        else :
+        else:
             return self.uid
 
     def version(self) -> str:
@@ -109,6 +137,6 @@ class Odoo:
         else:
             return "You need to connect first.\nExecute .setCommonEndpoint()"
 
-    def formatDate (self, inputDate):
+    def formatDate(self, inputDate):
         tmpDate = datetime.strptime(inputDate, '%d/%m/%Y')
         return(tmpDate.strftime('%Y-%m-%d'))
