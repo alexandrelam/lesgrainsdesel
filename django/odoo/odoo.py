@@ -75,16 +75,9 @@ class Odoo:
         decodedData = tuple(sample.items())
         return decodedData[0][1]
 
-    '''
-    odoo.createEvent("cree avec python", "2020-11-25 20:18:18",
-                     "2020-11-26 20:18:18", 6)
-    '''
 
     def createEvent(self, name: str, dateBegin: str, dateEnd: str,
                     organizerID: int):
-        """
-        Date example : 2020-11-25 20:18:18"
-        """
         return self.models.execute_kw(self.db, self.uid, self.password,
                                       'event.event', 'create',
                                       [{
@@ -101,6 +94,10 @@ class Odoo:
         sample = encodedData[-1]
         decodedData = tuple(sample.items())
         return decodedData[0][1] 
+
+    def sendEventToOdoo(self, name: str, dateBegin: str, dateEnd: str, organizerId: int):
+        self.createEvent(name,dateBegin,dateEnd,organizerId)
+        return self.getLatestCreatedEventOdooId(name, dateBegin, dateEnd, organizerId)
 
     def getEventOdooId(self, name: str, eventId: int):
         encodedData = self.models.execute_kw(self.db, self.uid, self.password, 'event.event',
