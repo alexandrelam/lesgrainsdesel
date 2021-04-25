@@ -29,12 +29,22 @@ odoo.connect()
 
 
 
-#odoo.createEvent("event_test5", "2020-12-28 20:18:18",
-#                 "2020-12-29 20:18:18", 6)
+#odoo.createEvent("event_test23", "2022-12-28 20:18:18",
+#                 "2022-12-29 20:18:18", 6)
 
 
 
-output = odoo.getOdooName('test1@test.com')
-outputID = odoo.getOdooPartnerUid('test1@test.com')
-print(output)
-print(outputID)
+print(odoo.getLatestCreatedEventOdooId("event_test22", "2022-12-28 20:18:18",
+                 "2022-12-29 20:18:18", 6)
+)
+
+
+#output = odoo.getOdooName('test1@test.com')
+#outputID = odoo.getOdooPartnerUid('test1@test.com')
+#print(output)
+#print(outputID)
+
+
+#print(odoo.formatDate("06/10/1996"))
+
+

@@ -17,6 +17,7 @@ class Event(models.Model):
     long_description = models.CharField(max_length=300)
     date_begin = models.DateTimeField(max_length=300)
     date_end = models.DateTimeField(max_length=300)
+    odoo_id = models.IntegerField(default=-1)
     icon = models.ImageField(
         upload_to="images/", default="/images/default_icon.png")
     image = models.ImageField(

@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .models import Event, Participation, Adherent
 from django.contrib.auth.decorators import login_required
 from .utils import formatTime
+from odoo.odoo import Odoo
+from datetime import datetime
 
 # Create your views here.
 
@@ -285,7 +287,12 @@ def admin_next_status(request, id):
     if current_event.status == "ECV":
         current_event.status = "VAL"
     elif current_event.status == "VAL":
+        odoo = Odoo('admin','admin')
+        odoo.connect()
         current_event.status = "TER"
+        print("name :"+current_event.title+" date :"+str(current_event.date_begin.strftime("%Y-%m-%d %H:%M:%S"))+" author_id : "+str(current_event.author_id))
+        current_event.odoo_id =  odoo.sendEventToOdoo(current_event.title, current_event.date_begin.strftime("%Y-%m-%d %H:%M:%S"), current_event.date_begin.strftime("%Y-%m-%d %H:%M:%S"), current_event.author_id) 
+        print(" odoo event id "+str(current_event.odoo_id))
     current_event.save()
     return redirect("/admin_redirect/")
 
@@ -296,6 +303,10 @@ def admin_previous_status(request, id):
     if current_event.status == "VAL":
         current_event.status = "ECV"
     elif current_event.status == "TER":
+        odoo = Odoo('admin', 'admin')
+        odoo.connect()
         current_event.status = "VAL"
+        odoo.deleteOdooEvent(current_event.odoo_id)
+
     current_event.save()
     return redirect("/admin_redirect/")
