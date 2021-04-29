@@ -39,11 +39,17 @@
                     <div v-show="page_index == 2">
                         <div class="input-container">
                             <label for="time-start">Date de début</label>
-                            <datetime type="datetime" v-model="datetime_start" format="yyyy-MM-dd HH:mm" name="time-start"></datetime> 
+                            <div class="datetime-wrapper">
+                                <i class="far fa-calendar-plus"></i>
+                                <datetime type="datetime" v-model="datetime_start" format="yyyy-MM-dd HH:mm" name="time-start"></datetime> 
+                            </div>
                         </div>
                         <div class="input-container">
                             <label for="time-end">Date de fin</label>
-                            <datetime type="datetime" v-model="datetime_end" format="yyyy-MM-dd HH:mm" name="time-end"></datetime> 
+                            <div class="datetime-wrapper">
+                                <i class="far fa-calendar-plus"></i>
+                                <datetime type="datetime" v-model="datetime_end" format="yyyy-MM-dd HH:mm" name="time-end"></datetime> 
+                            </div>
                         </div>
                     </div>
                     <div v-show="page_index == 3">
@@ -86,6 +92,38 @@
     });
 </script>
 <style>
+    .vdatetime-popup .vdatetime-popup__header{
+        background: var(--hover-highlight);
+    }
+
+    .vdatetime-popup .vdatetime-calendar__month__day--selected>span>span{
+        background: var(--hover-highlight);
+    }
+
+    .vdatetime-popup__actions .vdatetime-popup__actions__button{
+        color: var(--hover-highlight);
+    }
+
+    .vdatetime-time-picker .vdatetime-time-picker__item--selected{
+        color: var(--hover-highlight);
+    }
+
+    .datetime-wrapper{
+        position: relative;
+    }
+
+    .datetime-wrapper input{
+        cursor: pointer;
+    }
+
+    .datetime-wrapper .fa-calendar-plus{
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none; 
+      }
+
     .form-title {
         margin-bottom: 54px;
     }
@@ -94,6 +132,10 @@
         display: flex;
         flex-direction: column;
         margin-bottom: 36px;
+    }
+
+    .vdatetime .vdatetime-input{
+        width: 500px;
     }
 
     .input-container input[type="text"],
@@ -144,6 +186,12 @@
 
     .form-btn-container .btn-next .btn {
         background-color: var(--highlight);
+    }
+
+    @media only screen and (max-width: 1250px) {
+        .vdatetime .vdatetime-input{
+            width: 350px;
+        }
     }
 </style>
 {% endblock details %}
