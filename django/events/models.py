@@ -20,9 +20,9 @@ class Event(models.Model):
     date_end = models.DateTimeField(max_length=300)
     odoo_id = models.IntegerField(default=-1)
     icon = models.ImageField(
-        upload_to="images/", default="images/default_icon.png")
+        upload_to='images/', default="/images/default_icon.png")
     image = models.ImageField(
-        upload_to='images/', default="images/default_image.png")
+        upload_to='images/', default="/images/default_image.png")
     STATUS = Choices(('ECV', _('En cours de validation')),
                      ('VAL', _('Validé')),
                      ('TER', _('Terminé')),)
@@ -39,14 +39,18 @@ class Event(models.Model):
 
     def save(self, *args, **kwargs):
         '''try to compress images and icons when uploaded'''
-        print(f"THIS IS THE DEFAULT IMAGE :!!!!!!!!!!!! : {self.image}")
-        if "default" not in self.image:
+
+        try:
             new_image = self.compress(self.image)
             self.image = new_image
+        except:
+            pass
 
-        if "default" not in self.icon:
+        try:
             new_icon = self.compress(self.icon)
             self.icon = new_icon
+        except:
+            pass
         super().save(*args, **kwargs)
 
 
