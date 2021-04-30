@@ -10,6 +10,7 @@ from io import BytesIO
 from PIL import Image
 from django.core.files import File
 
+
 class Event(models.Model):
     title = models.CharField(max_length=50)
     author_id = models.IntegerField(default=1)
@@ -19,9 +20,9 @@ class Event(models.Model):
     date_end = models.DateTimeField(max_length=300)
     odoo_id = models.IntegerField(default=-1)
     icon = models.ImageField(
-        upload_to="images/", default="/images/default_icon.png")
+        upload_to="images/", default="images/default_icon.png")
     image = models.ImageField(
-        upload_to='images/', default="/images/default_image.png")
+        upload_to='images/', default="images/default_image.png")
     STATUS = Choices(('ECV', _('En cours de validation')),
                      ('VAL', _('Validé')),
                      ('TER', _('Terminé')),)
@@ -31,16 +32,22 @@ class Event(models.Model):
     def compress(self, image):
         im = Image.open(image)
         im = im.convert('RGB')
-        im_io = BytesIO() 
-        im.save(im_io, 'JPEG', quality=60) 
+        im_io = BytesIO()
+        im.save(im_io, 'JPEG', quality=60)
         new_image = File(im_io, name=image.name)
         return new_image
 
     def save(self, *args, **kwargs):
-                if not self.id:
-                    new_image = self.compress(self.image)
-                    self.image = new_image
-                super().save(*args, **kwargs)
+        '''try to compress images and icons when uploaded'''
+        print(f"THIS IS THE DEFAULT IMAGE :!!!!!!!!!!!! : {self.image}")
+        if "default" not in self.image:
+            new_image = self.compress(self.image)
+            self.image = new_image
+
+        if "default" not in self.icon:
+            new_icon = self.compress(self.icon)
+            self.icon = new_icon
+        super().save(*args, **kwargs)
 
 
 class Participation(models.Model):
