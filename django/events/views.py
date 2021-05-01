@@ -131,8 +131,11 @@ def create_modify_event(request, id):
         img_icon = None
         img_couverture = None
         author_id = request.user.userId
-        if len(request.FILES):
+
+        if "img-icon" in request.FILES:
             img_icon = request.FILES["img-icon"]
+
+        if "img-couverture" in request.FILES:
             img_couverture = request.FILES["img-couverture"]
 
         if titre and description and time_start and time_end:
