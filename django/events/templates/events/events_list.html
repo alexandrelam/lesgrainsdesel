@@ -3,7 +3,7 @@
   <div class="header">
     <div class="text">
       <h1>Événements</h1>
-      <p id="date"></p>
+      <p id="date" v-text="today"></p>
     </div>
     <a class="icon" href="{% url 'create_events' %}">
       <button>
@@ -68,7 +68,6 @@ function month_int_to_litteral(month_number){
 function formatDate(){
     var today = new Date();
     day = today.getDate();
-    console.log(today);
     month = today.getMonth();
     year = today.getFullYear();
  
@@ -76,10 +75,7 @@ function formatDate(){
     return today;
 }
 
-
-var date_p = document.getElementById("date");
-date_p.innerHTML = formatDate();
-
+var date_p = new Vue({ el: '#date', data: { today: formatDate() }  });
 </script>
 
 </section>
