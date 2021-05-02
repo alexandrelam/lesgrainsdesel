@@ -115,9 +115,6 @@ def create_modify_event(request, id):
 
     context["current_event"] = Event.objects.get(pk=id)
 
-    current_event_date_begin = formatTime(Event.objects.get(pk=id).date_begin)
-    current_event_date_end = formatTime(Event.objects.get(pk=id).date_end)
-
     context["modify"] = True
     context["displayStatus"] = True
     context["eventsList"] = Event.objects.filter(
@@ -269,14 +266,6 @@ def admin_details(request, id):
     if Participation.objects.filter(Adherent__userId=current_user.userId, event__id=id):
         context["participe"] = True
     return render(request, 'events/admin_page.html', context)
-
-
-@login_required(login_url='/login/')
-def noEventsAdmin(request):
-    context = {}
-    context["page"] = "admin"
-    context["current_user"] = request.user
-    return render(request, 'events/events_list.html', context)
 
 
 @login_required(login_url='/login/')
