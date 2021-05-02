@@ -37,8 +37,6 @@ def create_events(request):
     context["displayStatus"] = True
     current_user = request.user
     context["current_user"] = current_user
-    print("before prints")
-    print(Adherent.objects.all().filter(userId=current_user.userId))
     context["adherent"] = Adherent.objects.all().filter(
         userId=current_user.userId)[0]
     context["page"] = "create_events"
@@ -109,14 +107,17 @@ def delete_events(request, id):
 @login_required(login_url='/login/')
 def create_modify_event(request, id):
     context = {}
+
     current_user = request.user
     context["current_user"] = current_user
+
     context["page"] = "create_events"
+
     context["current_event"] = Event.objects.get(pk=id)
-    context["current_event_date_begin"] = formatTime(
-        Event.objects.get(pk=id).date_begin)
-    context["current_event_date_end"] = formatTime(
-        Event.objects.get(pk=id).date_end)
+
+    current_event_date_begin = formatTime(Event.objects.get(pk=id).date_begin)
+    current_event_date_end = formatTime(Event.objects.get(pk=id).date_end)
+
     context["modify"] = True
     context["displayStatus"] = True
     context["eventsList"] = Event.objects.filter(
@@ -130,25 +131,29 @@ def create_modify_event(request, id):
         img_icon = None
         img_couverture = None
         author_id = request.user.userId
+
         if len(request.FILES):
             img_icon = request.FILES["img-icon"]
             img_couverture = request.FILES["img-couverture"]
 
-        if titre and description and time_start and time_end:
+        if titre and description:
             event = Event.objects.get(pk=id)
             event.author_id = author_id
             event.title = titre
             event.short_description = description
             event.long_description = description
-            event.date_begin = time_start
-            event.date_end = time_end
+
+            if len(time_start) != 0:
+                event.date_begin = time_start
+
+            if len(time_end) != 0:
+                event.date_end = time_end
 
             if img_icon:
                 event.icon = img_icon
 
             if img_couverture:
                 event.image = img_couverture
-
             event.save()
             return redirect("/create/")
 
@@ -202,7 +207,8 @@ def noParticipations(request):
 @login_required(login_url='/login/')
 def redirect_view(request):
     if(Event.objects.filter(status="VAL")):
-        first_event_id = Event.objects.filter(status="VAL").order_by('date_begin').first().id
+        first_event_id = Event.objects.filter(
+            status="VAL").order_by('date_begin').first().id
         response = redirect("events/" + str(first_event_id))
     else:
         response = redirect("events/")
@@ -276,7 +282,7 @@ def noEventsAdmin(request):
 @login_required(login_url='/login/')
 def noEventsAdmin(request):
     context = {}
-    context["page"] = "admin"        
+    context["page"] = "admin"
     context["current_user"] = request.user
     return render(request, 'events/events_list.html', context)
 
@@ -287,11 +293,13 @@ def admin_next_status(request, id):
     if current_event.status == "ECV":
         current_event.status = "VAL"
     elif current_event.status == "VAL":
-        odoo = Odoo('admin','admin')
+        odoo = Odoo('admin', 'admin')
         odoo.connect()
         current_event.status = "TER"
-        print("name :"+current_event.title+" date :"+str(current_event.date_begin.strftime("%Y-%m-%d %H:%M:%S"))+" author_id : "+str(current_event.author_id))
-        current_event.odoo_id =  odoo.sendEventToOdoo(current_event.title, current_event.date_begin.strftime("%Y-%m-%d %H:%M:%S"), current_event.date_begin.strftime("%Y-%m-%d %H:%M:%S"), current_event.author_id) 
+        print("name :"+current_event.title+" date :"+str(current_event.date_begin.strftime(
+            "%Y-%m-%d %H:%M:%S"))+" author_id : "+str(current_event.author_id))
+        current_event.odoo_id = odoo.sendEventToOdoo(current_event.title, current_event.date_begin.strftime(
+            "%Y-%m-%d %H:%M:%S"), current_event.date_begin.strftime("%Y-%m-%d %H:%M:%S"), current_event.author_id)
         print(" odoo event id "+str(current_event.odoo_id))
     current_event.save()
     return redirect("/admin_redirect/")
