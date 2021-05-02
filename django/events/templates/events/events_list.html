@@ -3,7 +3,7 @@
   <div class="header">
     <div class="text">
       <h1>Événements</h1>
-      <p>5 octobre 2020</p>
+      <p id="date" v-text="today"></p>
     </div>
     <a class="icon" href="{% url 'create_events' %}">
       <button>
@@ -58,6 +58,27 @@
       {% endfor %}
     </ul>
   </div>
+
+<script>
+function month_int_to_litteral(month_number){
+    const month = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembr'];
+    return month[month_number]
+}
+
+function formatDate(){
+    var today = new Date();
+    day = today.getDate();
+    month = today.getMonth();
+    year = today.getFullYear();
+ 
+    today = day + " " + month_int_to_litteral(month) + " " + year;
+    return today;
+}
+
+var date_p = new Vue({ el: '#date', data: { today: formatDate() }  });
+</script>
+
 </section>
+
 
 {% block details %} {% endblock details %} {% endblock events_list %}
