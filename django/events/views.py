@@ -110,14 +110,14 @@ def delete_events(request, id):
 @login_required(login_url='/login/')
 def create_modify_event(request, id):
     context = {}
+
     current_user = request.user
     context["current_user"] = current_user
+
     context["page"] = "create_events"
+
     context["current_event"] = Event.objects.get(pk=id)
-    context["current_event_date_begin"] = formatTime(
-        Event.objects.get(pk=id).date_begin)
-    context["current_event_date_end"] = formatTime(
-        Event.objects.get(pk=id).date_end)
+
     context["modify"] = True
     context["displayStatus"] = True
     context["eventsList"] = Event.objects.filter(
@@ -138,21 +138,24 @@ def create_modify_event(request, id):
         if "img-couverture" in request.FILES:
             img_couverture = request.FILES["img-couverture"]
 
-        if titre and description and time_start and time_end:
+        if titre and description:
             event = Event.objects.get(pk=id)
             event.author_id = author_id
             event.title = titre
             event.short_description = description
             event.long_description = description
-            event.date_begin = time_start
-            event.date_end = time_end
+
+            if len(time_start) != 0:
+                event.date_begin = time_start
+
+            if len(time_end) != 0:
+                event.date_end = time_end
 
             if img_icon:
                 event.icon = img_icon
 
             if img_couverture:
                 event.image = img_couverture
-
             event.save()
             return redirect("/create/")
 
@@ -268,14 +271,6 @@ def admin_details(request, id):
     if Participation.objects.filter(Adherent__userId=current_user.userId, event__id=id):
         context["participe"] = True
     return render(request, 'events/admin_page.html', context)
-
-
-@login_required(login_url='/login/')
-def noEventsAdmin(request):
-    context = {}
-    context["page"] = "admin"
-    context["current_user"] = request.user
-    return render(request, 'events/events_list.html', context)
 
 
 @login_required(login_url='/login/')
