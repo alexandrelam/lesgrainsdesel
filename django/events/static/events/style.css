@@ -487,6 +487,25 @@ a {
   line-height: 22px;
 }
 
+.error-msg{
+  position: fixed;
+  z-index: 10;
+  top: 2rem;
+  right: 2rem;
+  background-color: #fff2f0;
+  padding: 8px 15px;
+  border: solid #ffccc7 1px;
+  border-radius: 2px;
+}
+
+.error-msg svg{
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.error-msg .close-btn{
+    display: inline;
+}
 /*************************************/
 
 /*************************************/
