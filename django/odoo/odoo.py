@@ -122,6 +122,11 @@ class Odoo:
         return self.models.execute_kw(self.db, self.uid, self.password,
                                       'event.event', 'unlink', [[odooId]])
 
+
+    def endOdooEvent (self, odooId=0):
+        return self.models.execute_kw(self.db, self.uid, self.password, 'event.event','button_done', [[odooId]])
+
+
     def getOdooAdminUid(self):
         if self.uid == False:
             return -1

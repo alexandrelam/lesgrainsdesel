@@ -38,6 +38,7 @@ print(odoo.getLatestCreatedEventOdooId("event_test22", "2022-12-28 20:18:18",
                  "2022-12-29 20:18:18", 6)
 )
 
+print(odoo.endOdooEvent(8))
 
 #output = odoo.getOdooName('test1@test.com')
 #outputID = odoo.getOdooPartnerUid('test1@test.com')
