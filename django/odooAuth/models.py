@@ -17,8 +17,10 @@ class OdooBackend (BaseBackend):
         odoo = Odoo('admin', 'admin')
         odoo.connect()
         password = odoo.formatDate(password)
-        print("date = "+password)
         user = None
+        if username == None or password == None :
+            return user
+        print("date = "+str(password))
         encodedData = odoo.searchPartnerByBirthdate(password)
         print(encodedData)
         for i in encodedData:
