@@ -3,9 +3,17 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/luxon"></script>
 <script src="https://unpkg.com/vue-datetime"></script>
-    
+
 <section class="create_events details" id="create_events_app">
     <div>
+        {% if errorMsg %}
+        <div class="error-msg" v-if="isDisplayed">
+            Veuillez remplir tous les champs du formulaire
+            <div class="close-btn" @click="isDisplayed = false">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        {% endif %}
         <div class="header">
             <div class="profile-picture" style="background-image : url('{{ adherent.picture.url }}')"></div>
             <div>
@@ -41,14 +49,16 @@
                             <label for="time-start">Date de début</label>
                             <div class="datetime-wrapper">
                                 <i class="far fa-calendar-plus"></i>
-                                <datetime type="datetime" v-model="datetime_start" format="yyyy-MM-dd HH:mm" name="time-start"></datetime> 
+                                <datetime type="datetime" v-model="datetime_start" format="yyyy-MM-dd HH:mm"
+                                    name="time-start"></datetime>
                             </div>
                         </div>
                         <div class="input-container">
                             <label for="time-end">Date de fin</label>
                             <div class="datetime-wrapper">
                                 <i class="far fa-calendar-plus"></i>
-                                <datetime type="datetime" v-model="datetime_end" format="yyyy-MM-dd HH:mm" name="time-end"></datetime> 
+                                <datetime type="datetime" v-model="datetime_end" format="yyyy-MM-dd HH:mm"
+                                    name="time-end"></datetime>
                             </div>
                         </div>
                     </div>
@@ -88,41 +98,42 @@
             page_index: 1,
             datetime_start: "",
             datetime_end: "",
+            isDisplayed: true
         },
     });
 </script>
 <style>
-    .vdatetime-popup .vdatetime-popup__header{
+    .vdatetime-popup .vdatetime-popup__header {
         background: var(--hover-highlight);
     }
 
-    .vdatetime-popup .vdatetime-calendar__month__day--selected>span>span{
+    .vdatetime-popup .vdatetime-calendar__month__day--selected>span>span {
         background: var(--hover-highlight);
     }
 
-    .vdatetime-popup__actions .vdatetime-popup__actions__button{
+    .vdatetime-popup__actions .vdatetime-popup__actions__button {
         color: var(--hover-highlight);
     }
 
-    .vdatetime-time-picker .vdatetime-time-picker__item--selected{
+    .vdatetime-time-picker .vdatetime-time-picker__item--selected {
         color: var(--hover-highlight);
     }
 
-    .datetime-wrapper{
+    .datetime-wrapper {
         position: relative;
     }
 
-    .datetime-wrapper input{
+    .datetime-wrapper input {
         cursor: pointer;
     }
 
-    .datetime-wrapper .fa-calendar-plus{
+    .datetime-wrapper .fa-calendar-plus {
         position: absolute;
         right: 10px;
         top: 50%;
         transform: translateY(-50%);
-        pointer-events: none; 
-      }
+        pointer-events: none;
+    }
 
     .form-title {
         margin-bottom: 54px;
@@ -134,7 +145,7 @@
         margin-bottom: 36px;
     }
 
-    .vdatetime .vdatetime-input{
+    .vdatetime .vdatetime-input {
         width: 500px;
     }
 
@@ -189,7 +200,7 @@
     }
 
     @media only screen and (max-width: 1250px) {
-        .vdatetime .vdatetime-input{
+        .vdatetime .vdatetime-input {
             width: 350px;
         }
     }

@@ -44,6 +44,8 @@ def create_events(request):
     context["eventsList"] = Event.objects.filter(
         author_id=current_user.userId).order_by("date_begin")
 
+    context["errorMsg"] = False
+
     if request.method == 'POST':
         titre = request.POST["titre"]
         description = request.POST["description"]
@@ -75,6 +77,8 @@ def create_events(request):
                 event.image = img_couverture
 
             event.save()
+        else:
+            context["errorMsg"] = True
 
     return render(request, 'events/create_events.html', context)
 
@@ -123,6 +127,8 @@ def create_modify_event(request, id):
     context["eventsList"] = Event.objects.filter(
         author_id=current_user.userId).order_by("date_begin")
 
+    context["errorMsg"] = False
+
     if request.method == 'POST':
         titre = request.POST["titre"]
         description = request.POST["description"]
@@ -158,6 +164,8 @@ def create_modify_event(request, id):
                 event.image = img_couverture
             event.save()
             return redirect("/create/")
+        else:
+            context["errorMsg"] = True
 
     if request.user.userId == Event.objects.get(pk=id).author_id:
         return render(request, "events/create_events.html", context)
