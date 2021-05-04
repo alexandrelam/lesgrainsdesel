@@ -135,5 +135,8 @@ class Odoo:
             return "You need to connect first.\nExecute .setCommonEndpoint()"
 
     def formatDate(self, inputDate):
-        tmpDate = datetime.strptime(inputDate, '%d/%m/%Y')
+        try :
+            tmpDate = datetime.strptime(inputDate, '%d/%m/%Y')
+        except: 
+            return None
         return(tmpDate.strftime('%Y-%m-%d'))
